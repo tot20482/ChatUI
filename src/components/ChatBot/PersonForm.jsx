@@ -35,15 +35,12 @@ const PersonForm = ({ onSubmit, loading }) => {
       newErrors.name = "Tên là bắt buộc";
     }
     
-    if (!formData.age.trim()) {
-      newErrors.age = "Tuổi là bắt buộc";
-    } else if (isNaN(formData.age) || parseInt(formData.age) < 0 || parseInt(formData.age) > 150) {
+    // Remove age validation - no longer required
+    if (formData.age && (isNaN(formData.age) || parseInt(formData.age) < 0 || parseInt(formData.age) > 150)) {
       newErrors.age = "Tuổi phải là số từ 0 đến 150";
     }
     
-    if (!formData.organization.trim()) {
-      newErrors.organization = "Tổ chức là bắt buộc";
-    }
+    // Remove organization validation - no longer required
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -54,7 +51,11 @@ const PersonForm = ({ onSubmit, loading }) => {
     
     if (validateForm()) {
       // Create query string from form data
-      let query = `Tìm kiếm thông tin về ${formData.name}, ${formData.age} tuổi`;
+      let query = `Tìm kiếm thông tin về ${formData.name}`;
+      
+      if (formData.age) {
+        query += `, ${formData.age} tuổi`;
+      }
       
       if (formData.gender) {
         query += `, giới tính ${formData.gender}`;
@@ -68,7 +69,9 @@ const PersonForm = ({ onSubmit, loading }) => {
         query += `, chức vụ ${formData.occupation}`;
       }
       
-      query += `, làm việc tại ${formData.organization}`;
+      if (formData.organization) {
+        query += `, làm việc tại ${formData.organization}`;
+      }
       
       onSubmit(query);
     }
@@ -120,7 +123,7 @@ const PersonForm = ({ onSubmit, loading }) => {
           {/* Age Field */}
           <div>
             <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-1">
-              Tuổi <span className="text-red-500">*</span>
+              Tuổi
             </label>
             <input
               type="number"
@@ -128,7 +131,7 @@ const PersonForm = ({ onSubmit, loading }) => {
               name="age"
               value={formData.age}
               onChange={handleChange}
-              placeholder="Nhập tuổi"
+              placeholder="Nhập tuổi (tùy chọn)"
               min="0"
               max="150"
               className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
@@ -204,7 +207,7 @@ const PersonForm = ({ onSubmit, loading }) => {
           {/* Organization Field */}
           <div>
             <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
-              Tổ chức <span className="text-red-500">*</span>
+              Tổ chức
             </label>
             <input
               type="text"
@@ -212,15 +215,10 @@ const PersonForm = ({ onSubmit, loading }) => {
               name="organization"
               value={formData.organization}
               onChange={handleChange}
-              placeholder="Nhập tên tổ chức"
-              className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.organization ? 'border-red-500' : 'border-gray-300'
-              }`}
+              placeholder="Nhập tên tổ chức (tùy chọn)"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={loading}
             />
-            {errors.organization && (
-              <p className="text-red-500 text-xs mt-1">{errors.organization}</p>
-            )}
           </div>
         </div>
 
