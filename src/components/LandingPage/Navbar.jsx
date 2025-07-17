@@ -1,13 +1,12 @@
 import logo from "../../assets/logouit.svg";
+import VpbankLogo from "../../assets/VPBank_logo.png";
 
 const Navbar = ({ handleGetStarted }) => {
   return (
     <div className="px-30 py-4 flex items-center justify-between">
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-6">
         <img src={logo} alt="Logo UIT" className="w-18 h-18" />
-        <h1 className="font-bold uppercase text-md text-[#084892]">
-          Group 253
-        </h1>
+        <img src={VpbankLogo} alt="Logo VPBANK" className="h-12" />
       </div>
       <div className="flex items-center space-x-14">
         <div className="flex items-center space-x-4">

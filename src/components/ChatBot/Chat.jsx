@@ -26,7 +26,7 @@ export default function Chat() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          query: searchQuery.trim()
+          query: searchQuery.trim(),
         }),
       });
 
@@ -62,16 +62,16 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col justify-start items-center w-full h-full p-6 overflow-y-auto">
+    <div className="flex flex-col justify-center items-center w-full p-6">
       <div className="mb-8 w-full flex justify-center items-center">
         <h1 className="text-3xl font-semibold">Bạn muốn hỏi cái gì?</h1>
       </div>
-      
+
       {/* Search Mode Toggle */}
       <div className="mb-6 flex bg-gray-100 rounded-lg p-1">
         <button
           onClick={() => setSearchMode("text")}
-          className={`px-4 py-2 rounded-md transition-colors ${
+          className={`px-4 py-2 rounded-md transition-colors cursor-pointer ${
             searchMode === "text"
               ? "bg-white text-blue-600 shadow-sm"
               : "text-gray-600 hover:text-gray-800"
@@ -81,7 +81,7 @@ export default function Chat() {
         </button>
         <button
           onClick={() => setSearchMode("form")}
-          className={`px-4 py-2 rounded-md transition-colors ${
+          className={`px-4 py-2 rounded-md transition-colors cursor-poiter ${
             searchMode === "form"
               ? "bg-white text-blue-600 shadow-sm"
               : "text-gray-600 hover:text-gray-800"
@@ -93,7 +93,10 @@ export default function Chat() {
 
       {/* Text Search Mode */}
       {searchMode === "text" && (
-        <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center w-[60%] bg-primary-600 rounded-2xl gap-4 mt-4 border-[1px] border-gray-200 shadow">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-row justify-between items-center w-[60%] bg-primary-600 rounded-2xl gap-4 mt-4 border-[1px] border-gray-200 shadow"
+        >
           <div className="w-full h-full p-4">
             <textarea
               value={query}
@@ -104,7 +107,7 @@ export default function Chat() {
               disabled={loading}
             />
           </div>
-          <button 
+          <button
             type="submit"
             disabled={loading || !query.trim()}
             className="cursor-pointer mr-4 flex justify-center items-center w-[40px] h-[40px] rounded-full bg-primary-400 aspect-square bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-200 transition-colors"
@@ -140,7 +143,7 @@ export default function Chat() {
 
       {/* Results Display */}
       {responseData && !loading && (
-        <Results 
+        <Results
           responseData={responseData}
           setIsIndividual={setIsIndividual}
           setIsOrganization={setIsOrganization}
@@ -149,14 +152,14 @@ export default function Chat() {
 
       {/* Modal Components */}
       {isIndividual && responseData?.response?.result?.invidual_AML && (
-        <Individual 
+        <Individual
           setIsIndividual={setIsIndividual}
           individualData={responseData.response.result.invidual_AML}
         />
       )}
 
       {isOrganization && responseData?.response?.result?.organization_AML && (
-        <Organization 
+        <Organization
           setIsOrganization={setIsOrganization}
           organizationData={responseData.response.result.organization_AML}
         />

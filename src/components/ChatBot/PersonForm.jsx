@@ -7,39 +7,61 @@ const PersonForm = ({ onSubmit, loading }) => {
     gender: "",
     hometown: "",
     occupation: "",
-    organization: ""
+    organization: "",
+
+    idNumber: "",
+    idIssuedDate: "",
+    idIssuedPlace: "",
+    mobile: "",
+    landline: "",
+    email: "",
+    immigrationStatus: "",
+    residenceAddress: "",
+    nationality: "",
+    isCitizen: "",
+    dateOfBirth: "",
+    placeOfBirth: "",
+    registeredAddressFrom: "",
+    registeredAddressTo: "",
+    currentAddress: "",
+    currentProvince: "",
   });
 
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ""
+        [name]: "",
       }));
     }
   };
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = "Tên là bắt buộc";
     }
-    
+
     // Remove age validation - no longer required
-    if (formData.age && (isNaN(formData.age) || parseInt(formData.age) < 0 || parseInt(formData.age) > 150)) {
+    if (
+      formData.age &&
+      (isNaN(formData.age) ||
+        parseInt(formData.age) < 0 ||
+        parseInt(formData.age) > 150)
+    ) {
       newErrors.age = "Tuổi phải là số từ 0 đến 150";
     }
-    
+
     // Remove organization validation - no longer required
 
     setErrors(newErrors);
@@ -48,31 +70,31 @@ const PersonForm = ({ onSubmit, loading }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       // Create query string from form data
       let query = `Tìm kiếm thông tin về ${formData.name}`;
-      
+
       if (formData.age) {
         query += `, ${formData.age} tuổi`;
       }
-      
+
       if (formData.gender) {
         query += `, giới tính ${formData.gender}`;
       }
-      
+
       if (formData.hometown) {
         query += `, quê quán ${formData.hometown}`;
       }
-      
+
       if (formData.occupation) {
         query += `, chức vụ ${formData.occupation}`;
       }
-      
+
       if (formData.organization) {
         query += `, làm việc tại ${formData.organization}`;
       }
-      
+
       onSubmit(query);
     }
   };
@@ -84,7 +106,24 @@ const PersonForm = ({ onSubmit, loading }) => {
       gender: "",
       hometown: "",
       occupation: "",
-      organization: ""
+      organization: "",
+
+      idNumber: "",
+      idIssuedDate: "",
+      idIssuedPlace: "",
+      mobile: "",
+      landline: "",
+      email: "",
+      immigrationStatus: "",
+      residenceAddress: "",
+      nationality: "",
+      isCitizen: "",
+      dateOfBirth: "",
+      placeOfBirth: "",
+      registeredAddressFrom: "",
+      registeredAddressTo: "",
+      currentAddress: "",
+      currentProvince: "",
     });
     setErrors({});
   };
@@ -92,15 +131,18 @@ const PersonForm = ({ onSubmit, loading }) => {
   return (
     <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 mt-6">
       <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">
-        Tìm kiếm thông tin cá nhân
+        Thông tin cá nhân
       </h3>
-      
+
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* First Row - Name and Age */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Họ và tên <span className="text-red-500">*</span>
             </label>
             <input
@@ -111,7 +153,7 @@ const PersonForm = ({ onSubmit, loading }) => {
               onChange={handleChange}
               placeholder="Nhập họ và tên"
               className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.name ? 'border-red-500' : 'border-gray-300'
+                errors.name ? "border-red-500" : "border-gray-300"
               }`}
               disabled={loading}
             />
@@ -122,7 +164,10 @@ const PersonForm = ({ onSubmit, loading }) => {
 
           {/* Age Field */}
           <div>
-            <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="age"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Tuổi
             </label>
             <input
@@ -135,7 +180,7 @@ const PersonForm = ({ onSubmit, loading }) => {
               min="0"
               max="150"
               className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.age ? 'border-red-500' : 'border-gray-300'
+                errors.age ? "border-red-500" : "border-gray-300"
               }`}
               disabled={loading}
             />
@@ -149,7 +194,10 @@ const PersonForm = ({ onSubmit, loading }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Gender Field */}
           <div>
-            <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="gender"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Giới tính
             </label>
             <select
@@ -169,7 +217,10 @@ const PersonForm = ({ onSubmit, loading }) => {
 
           {/* Hometown Field */}
           <div>
-            <label htmlFor="hometown" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="hometown"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Quê quán
             </label>
             <input
@@ -189,7 +240,10 @@ const PersonForm = ({ onSubmit, loading }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Occupation Field */}
           <div>
-            <label htmlFor="occupation" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="occupation"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Chức vụ / Vị trí
             </label>
             <input
@@ -206,7 +260,10 @@ const PersonForm = ({ onSubmit, loading }) => {
 
           {/* Organization Field */}
           <div>
-            <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="organization"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Tổ chức
             </label>
             <input
@@ -218,6 +275,294 @@ const PersonForm = ({ onSubmit, loading }) => {
               placeholder="Nhập tên tổ chức (tùy chọn)"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={loading}
+            />
+          </div>
+        </div>
+
+        {/* Fourth Row - CMND, Phone, Email */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label
+              htmlFor="idNumber"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Số CMND/Hộ chiếu
+            </label>
+            <input
+              type="text"
+              id="idNumber"
+              name="idNumber"
+              value={formData.idNumber}
+              onChange={handleChange}
+              placeholder="CMND hoặc Hộ chiếu"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="idIssuedDate"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Ngày cấp
+            </label>
+            <input
+              type="date"
+              id="idIssuedDate"
+              name="idIssuedDate"
+              value={formData.idIssuedDate}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="idIssuedPlace"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Nơi cấp
+            </label>
+            <input
+              type="text"
+              id="idIssuedPlace"
+              name="idIssuedPlace"
+              value={formData.idIssuedPlace}
+              onChange={handleChange}
+              placeholder="Nơi cấp CMND/Hộ chiếu"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Fifth Row - Phone, Email */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label
+              htmlFor="mobile"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Điện thoại di động
+            </label>
+            <input
+              type="text"
+              id="mobile"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="landline"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Điện thoại cố định
+            </label>
+            <input
+              type="text"
+              id="landline"
+              name="landline"
+              value={formData.landline}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Sixth Row - Immigration and Nationality */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="immigrationStatus"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Số thị thực/nhập cảnh (nếu có)
+            </label>
+            <input
+              type="text"
+              id="immigrationStatus"
+              name="immigrationStatus"
+              value={formData.immigrationStatus}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="nationality"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Quốc tịch
+            </label>
+            <input
+              type="text"
+              id="nationality"
+              name="nationality"
+              value={formData.nationality}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Seventh Row - Residency Type */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="flex items-center">
+            <input
+              type="radio"
+              id="citizen"
+              name="isCitizen"
+              value="Cư trú"
+              checked={formData.isCitizen === "Cư trú"}
+              onChange={handleChange}
+              className="mr-2"
+            />
+            <label
+              htmlFor="citizen"
+              className="text-sm font-medium text-gray-700"
+            >
+              Cư trú
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="radio"
+              id="nonCitizen"
+              name="isCitizen"
+              value="Không cư trú"
+              checked={formData.isCitizen === "Không cư trú"}
+              onChange={handleChange}
+              className="mr-2"
+            />
+            <label
+              htmlFor="nonCitizen"
+              className="text-sm font-medium text-gray-700"
+            >
+              Không cư trú
+            </label>
+          </div>
+        </div>
+
+        {/* Eighth Row - Birth Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="dateOfBirth"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Ngày sinh
+            </label>
+            <input
+              type="date"
+              id="dateOfBirth"
+              name="dateOfBirth"
+              value={formData.dateOfBirth}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="placeOfBirth"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Nơi sinh
+            </label>
+            <input
+              type="text"
+              id="placeOfBirth"
+              name="placeOfBirth"
+              value={formData.placeOfBirth}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Ninth Row - Address */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="registeredAddressFrom"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Địa chỉ thường trú (Từ năm)
+            </label>
+            <input
+              type="text"
+              id="registeredAddressFrom"
+              name="registeredAddressFrom"
+              value={formData.registeredAddressFrom}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="registeredAddressTo"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Đến năm
+            </label>
+            <input
+              type="text"
+              id="registeredAddressTo"
+              name="registeredAddressTo"
+              value={formData.registeredAddressTo}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Tenth Row - Current Address */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="currentAddress"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Địa chỉ cư trú hiện tại
+            </label>
+            <input
+              type="text"
+              id="currentAddress"
+              name="currentAddress"
+              value={formData.currentAddress}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="currentProvince"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Tỉnh/Thành phố
+            </label>
+            <input
+              type="text"
+              id="currentProvince"
+              name="currentProvince"
+              value={formData.currentProvince}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
           </div>
         </div>
@@ -238,7 +583,7 @@ const PersonForm = ({ onSubmit, loading }) => {
               "Tìm kiếm"
             )}
           </button>
-          
+
           <button
             type="button"
             onClick={handleReset}
@@ -253,4 +598,4 @@ const PersonForm = ({ onSubmit, loading }) => {
   );
 };
 
-export default PersonForm; 
+export default PersonForm;

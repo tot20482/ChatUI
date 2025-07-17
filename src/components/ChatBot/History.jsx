@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import newchat from "../../assets/newchat.png";
+import logouit from "../../assets/logouit.svg";
+import sidebarOpen from "../../assets/sidebar_open.png";
+import sidebarClose from "../../assets/sidebar_close.png";
 
-const History = () => {
+const History = ({ isSidebarOpen, setSidebarOpen }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const historyItems = [
@@ -10,24 +14,61 @@ const History = () => {
   ];
 
   return (
-    <div className="flex flex-col py-6 px-2 h-full w-full border-r border-gray-200 shadow">
-      <div className="ml-3">
-        <p className="text-gray-500">Đoạn chat</p>
-      </div>
-
-      <div className="flex flex-col mt-2 space-y-2 h-full">
-        {historyItems.map((item, index) => (
-          <div
-            key={item.id}
-            onClick={() => setActiveIndex(index)}
-            className={`py-2 px-3 rounded-lg cursor-pointer transition-all ${
-              activeIndex === index ? "bg-gray-200" : ""
-            }`}
-          >
-            <p>{item.title}</p>
+    <div className="h-full w-full">
+      {isSidebarOpen ? (
+        <div className="h-full border-r border-gray-200 shadow py-4">
+          <div className="mx-3 flex justify-between items-center mb-8">
+            <img src={logouit} alt="Logo uit" className="w-9 h-9" />
+            <button
+              className="w-8 h-8 cursor-pointer"
+              onClick={() => setSidebarOpen(!isSidebarOpen)}
+            >
+              {isSidebarOpen ? (
+                <img src={sidebarClose} alt="Close sidebar" />
+              ) : (
+                <img src={sidebarOpen} alt="Open sidebar" />
+              )}
+            </button>
           </div>
-        ))}
-      </div>
+          <div className="mx-1 flex items-end space-x-3 mb-6 hover:bg-gray-100 rounded-lg cursor-pointer p-2">
+            <img src={newchat} alt="Add" className="w-6 h-6" />
+            <p className="">Đoạn chat mới</p>
+          </div>
+          <div className="ml-3">
+            <p className="text-gray-500">Đoạn chat</p>
+          </div>
+
+          <div className="flex flex-col mt-2 space-y-2 h-full">
+            {historyItems.map((item, index) => (
+              <div
+                key={item.id}
+                onClick={() => setActiveIndex(index)}
+                className={`py-2 px-3 rounded-lg cursor-pointer transition-all ${
+                  activeIndex === index ? "bg-gray-200" : ""
+                }`}
+              >
+                <p>{item.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="h-full flex flex-col py-4 items-center border-r border-gray-200 shadow space-y-5">
+          <button
+            className="w-7 h-7 cursor-pointer"
+            onClick={() => setSidebarOpen(!isSidebarOpen)}
+          >
+            {isSidebarOpen ? (
+              <img src={sidebarClose} alt="Close sidebar" />
+            ) : (
+              <img src={sidebarOpen} alt="Open sidebar" />
+            )}
+          </button>
+          <div className="p-3 flex items-center justify-center hover:bg-gray-100 rounded-lg cursor-pointer">
+            <img src={newchat} alt="Add" className="w-7 h-7" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
