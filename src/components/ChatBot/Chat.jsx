@@ -4,6 +4,7 @@ import Results from "./Results";
 import Individual from "./Individual";
 import Organization from "./Organization";
 import PersonForm from "./PersonForm";
+import ErrorHandler from "../ErrorHandler";
 
 export default function Chat() {
   const [query, setQuery] = useState("");
@@ -41,7 +42,18 @@ export default function Chat() {
       }
 
       const data = await response.json();
-      setResponseData(data);
+      
+      // Check if the response contains an error message
+      if (!data.success && data.response && data.response.message) {
+        // We'll let the ErrorHandler component handle this
+        setResponseData(data);
+      } else if (data.success) {
+        // Success response
+        setResponseData(data);
+      } else {
+        // Unexpected format
+        setError("Định dạng phản hồi không hợp lệ");
+      }
     } catch (err) {
       setError(err.message || "Có lỗi xảy ra khi gọi API");
       console.error("API Error:", err);
@@ -67,8 +79,19 @@ export default function Chat() {
     }
   };
 
+  const handleErrorDismiss = () => {
+    // Clear the response data with error
+    setResponseData(null);
+  };
+
   return (
     <div className="flex flex-col  items-center w-full p-6">
+      {/* Error Handler */}
+      <ErrorHandler 
+        responseData={responseData} 
+        onDismiss={handleErrorDismiss} 
+      />
+      
       <div className="mb-8 w-full flex justify-center items-center">
         <h1 className="text-3xl font-semibold">Bạn muốn hỏi cái gì?</h1>
       </div>
@@ -132,7 +155,7 @@ export default function Chat() {
         <PersonForm onSubmit={handleFormSubmit} loading={loading} />
       )}
 
-      {/* Error Display */}
+      {/* Error Display for non-backend errors */}
       {error && (
         <div className="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg w-[60%]">
           <h3 className="font-bold">Lỗi:</h3>
@@ -147,8 +170,8 @@ export default function Chat() {
         </div>
       )}
 
-      {/* Results Display */}
-      {responseData && !loading && (
+      {/* Results Display - Only show if response is successful */}
+      {responseData && responseData.success && !loading && (
         <Results
           responseData={responseData}
           setIsIndividual={setIsIndividual}
@@ -180,6 +203,10 @@ export default function Chat() {
           <div
             key={idx}
             className="px-4 py-2 rounded-lg text-sm bg-white shadow hover:bg-gray-50 cursor-pointer"
+            onClick={() => {
+              setQuery(q);
+              handleApiCall(q);
+            }}
           >
             {q}
           </div>
