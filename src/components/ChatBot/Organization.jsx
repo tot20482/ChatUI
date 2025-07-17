@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const NewsPopup = ({ isOpen, onClose, newsData, loading }) => {
   if (!isOpen) return null;
+  
   const getSentimentColor = (sentiment) => {
     switch (sentiment?.toLowerCase()) {
       case 'positive':
@@ -44,6 +45,7 @@ const NewsPopup = ({ isOpen, onClose, newsData, loading }) => {
       return timestamp;
     }
   };
+  
   return (
     <div
       className="fixed inset-0 z-60 flex items-center justify-center bg-black/50 backdrop-blur-sm cursor-pointer"

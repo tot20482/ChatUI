@@ -1,0 +1,843 @@
+{
+    "success": true,
+    "response": {
+      "total_violations": 32,
+      "total_violation_types": 14,
+      "total_legal_statuses": 22,
+      "total_legal_statuse_types": 3,
+      "total_roles": 22,
+      "total_role_type": 3,
+      "details": {
+        "violation_types": [
+          "Vận chuyển trái phép tiền tệ qua biên giới",
+          "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+          "Hối lộ",
+          "Vi phạm dân sự",
+          "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của Nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+          "Đưa hối lộ",
+          "Chiếm đoạt tài sản",
+          "Vi phạm quy định về cho vay",
+          "hành chính",
+          "Tham ô tài sản",
+          "tranh chấp nhỏ",
+          "Tham nhũng",
+          "Rửa tiền",
+          "Lừa đảo chiếm đoạt tài sản"
+        ],
+        "violation_types_list": [
+          "Tham ô tài sản",
+          "Đưa hối lộ",
+          "Lừa đảo chiếm đoạt tài sản",
+          "Rửa tiền",
+          "Vận chuyển trái phép tiền tệ qua biên giới",
+          "Hối lộ",
+          "Vi phạm quy định về cho vay",
+          "Chiếm đoạt tài sản",
+          "Tham ô tài sản",
+          "Rửa tiền",
+          "Vi phạm quy định về cho vay",
+          "Chiếm đoạt tài sản",
+          "Vi phạm dân sự",
+          "hành chính",
+          "Hối lộ",
+          "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+          "tranh chấp nhỏ",
+          "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của Nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+          "Đưa hối lộ",
+          "Lừa đảo chiếm đoạt tài sản",
+          "Tham nhũng",
+          "Tham nhũng"
+        ],
+        "legal_statuses": [
+          "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+          "Đang trong quá trình điều tra",
+          "Đã kết án"
+        ],
+        "legal_statuses_list": [
+          "Đã kết án",
+          "Đã kết án",
+          "Đã kết án",
+          "Đã kết án",
+          "Đã kết án",
+          "Đã kết án",
+          "Đã kết án",
+          "Đã kết án",
+          "Đã kết án",
+          "Đã kết án",
+          "Đang trong quá trình điều tra",
+          "Đang trong quá trình điều tra",
+          "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+          "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+          "Đã kết án",
+          "Đã kết án",
+          "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+          "Đang trong quá trình điều tra",
+          "Đã kết án",
+          "Đã kết án",
+          "Đang trong quá trình điều tra",
+          "Đang trong quá trình điều tra"
+        ],
+        "roles": [
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Chủ mưu",
+          "Tham gia"
+        ],
+        "roles_list": [
+          "Chủ mưu",
+          "Chủ mưu",
+          "Chủ mưu",
+          "Chủ mưu",
+          "Chủ mưu",
+          "Chủ mưu",
+          "Chủ mưu",
+          "Chủ mưu",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tổ chức thực hiện hành vi vi phạm",
+          "Tham gia"
+        ],
+        "unique_violation_types_count": 14,
+        "unique_legal_statuses_count": 3,
+        "unique_roles_count": 3
+      },
+      "result": {
+        "person_info": {
+          "per_id": "per_id_1752506032806484",
+          "full_name": "Trương Mỹ Lan",
+          "age": "68",
+          "gender": "Female",
+          "hometown_or_residence": null,
+          "occupation_or_position": "Chủ tịch Tập đoàn Vạn Thịnh Phát",
+          "organization": "Tập đoàn Vạn Thịnh Phát",
+          "personal_relationships": "Cổ đông lớn nắm 91.5% cổ phần SCB, chỉ đạo các bị cáo Đinh Văn Thành, Bùi Anh Dũng, Võ Tấn Hoàng Văn, Tạ Chiêu Trung, Trương Khánh Hoàng, Trần Thị Mỹ Dung"
+        },
+        "invidual_AML": {
+          "Trương Mỹ Lan": {
+            "Tham ô tài sản": {
+              "customer_role": "Chủ mưu",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508094916843",
+                "media_id_1752508362186387",
+                "media_id_1752506342061619"
+              ]
+            },
+            "Đưa hối lộ": {
+              "customer_role": "Chủ mưu",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508362186387"
+              ]
+            },
+            "Lừa đảo chiếm đoạt tài sản": {
+              "customer_role": "Chủ mưu",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508362186387"
+              ]
+            },
+            "Rửa tiền": {
+              "customer_role": "Chủ mưu",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508362186387"
+              ]
+            },
+            "Vận chuyển trái phép tiền tệ qua biên giới": {
+              "customer_role": "Chủ mưu",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508362186387"
+              ]
+            },
+            "Hối lộ": {
+              "customer_role": "Chủ mưu",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508094916843"
+              ]
+            },
+            "Vi phạm quy định về cho vay": {
+              "customer_role": "Chủ mưu",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508094916843"
+              ]
+            },
+            "Chiếm đoạt tài sản": {
+              "customer_role": "Chủ mưu",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508252199101"
+              ]
+            }
+          }
+        },
+        "organization_AML": {
+          "Tập đoàn Vạn Thịnh Phát": {
+            "Tham ô tài sản": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508094916843",
+                "media_id_1752507113664518",
+                "media_id_1752508362186387",
+                "media_id_1752506342061619"
+              ]
+            },
+            "Rửa tiền": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508362186387",
+                "media_id_1752507620454275",
+                "media_id_1752506129101623"
+              ]
+            },
+            "Vi phạm quy định về cho vay": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đang trong quá trình điều tra",
+              "media_ids": [
+                "media_id_1752506342061619"
+              ]
+            },
+            "Chiếm đoạt tài sản": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đang trong quá trình điều tra",
+              "media_ids": [
+                "media_id_1752508252199101"
+              ]
+            },
+            "Vi phạm dân sự": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+              "media_ids": [
+                "media_id_1752508051510145",
+                "media_id_1752506032806429"
+              ]
+            },
+            "hành chính": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+              "media_ids": [
+                "media_id_1752508051510145",
+                "media_id_1752506032806429"
+              ]
+            },
+            "Hối lộ": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752507113664518"
+              ]
+            },
+            "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752506605587017"
+              ]
+            },
+            "tranh chấp nhỏ": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+              "media_ids": [
+                "media_id_1752508051510145"
+              ]
+            },
+            "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của Nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đang trong quá trình điều tra",
+              "media_ids": [
+                "media_id_1752506576993321",
+                "media_id_1752506278013855"
+              ]
+            },
+            "Đưa hối lộ": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508362186387"
+              ]
+            },
+            "Lừa đảo chiếm đoạt tài sản": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đã kết án",
+              "media_ids": [
+                "media_id_1752508362186387"
+              ]
+            },
+            "Tham nhũng": {
+              "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+              "legal_status": "Đang trong quá trình điều tra",
+              "media_ids": [
+                "media_id_1752506431325505"
+              ]
+            }
+          },
+          "Ngân hàng SCB": {
+            "Tham nhũng": {
+              "customer_role": "Tham gia",
+              "legal_status": "Đang trong quá trình điều tra",
+              "media_ids": [
+                "media_id_1752506431325505"
+              ]
+            }
+          }
+        },
+        "personal_risk_analysis": [
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752508252199101",
+            "p2m_id": "p2m_id_1752508353285348",
+            "entity_name": "Tạ Chiêu Trung",
+            "customer_role": "Đồng phạm"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản",
+            "media_id": "media_id_1752506342061619",
+            "p2m_id": "p2m_id_1752506376854101",
+            "entity_name": "Trương Mỹ Lan",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của Nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+            "media_id": "media_id_1752506576993321",
+            "p2m_id": "p2m_id_1752506590156689",
+            "entity_name": "Nguyễn Phương Hằng",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752506699359203",
+            "p2m_id": "p2m_id_1752506713636376",
+            "entity_name": "Lê Duy Đông",
+            "customer_role": "Tham gia"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản/Đưa hối lộ/Lừa đảo chiếm đoạt tài sản/Rửa tiền/Vận chuyển trái phép tiền tệ qua biên giới",
+            "media_id": "media_id_1752508362186387",
+            "p2m_id": "p2m_id_1752508369739097",
+            "entity_name": "Trương Mỹ Lan",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752506736598630",
+            "p2m_id": "p2m_id_1752506755898723",
+            "entity_name": "Huỳnh Văn Khánh",
+            "customer_role": "Tham gia"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752507220082644",
+            "p2m_id": "p2m_id_1752507285872106",
+            "entity_name": "Nguyễn Thị Huê",
+            "customer_role": "Bên liên quan bị động"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản/Hối lộ/Vi phạm quy định về cho vay",
+            "media_id": "media_id_1752508094916843",
+            "p2m_id": "p2m_id_1752508110501141",
+            "entity_name": "Trương Mỹ Lan",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Trộm cắp tài sản",
+            "media_id": "media_id_1752506947156825",
+            "p2m_id": "p2m_id_1752506969302473",
+            "entity_name": "Đinh Quang Tân",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Lừa đảo chiếm đoạt tài sản",
+            "media_id": "media_id_1752506883320510",
+            "p2m_id": "p2m_id_1752506904213951",
+            "entity_name": "Lê Hải",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+            "media_id": "media_id_1752506605587017",
+            "p2m_id": "p2m_id_1752506625606229",
+            "entity_name": "Nguyễn Phương Hằng",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752507822257912",
+            "p2m_id": "p2m_id_1752507840747132",
+            "entity_name": "Nguyễn Tấn Đạt",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+            "media_id": "media_id_1752506605587017",
+            "p2m_id": "p2m_id_1752506615871446",
+            "entity_name": "Nguyễn Phương Hằng",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752507491864010",
+            "p2m_id": "p2m_id_1752507600686822",
+            "entity_name": "Nguyễn Văn Hải",
+            "customer_role": "Đồng phạm"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản / Bắt cóc con tin",
+            "media_id": "media_id_1752507033628467",
+            "p2m_id": "p2m_id_1752507058602242",
+            "entity_name": "Nguyễn Khắc Nhật",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Vi phạm dân sự / hành chính",
+            "media_id": "media_id_1752506032806429",
+            "p2m_id": "p2m_id_1752506032806587",
+            "entity_name": "Phương Hằng",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Vi phạm dân sự / hành chính / tranh chấp nhỏ",
+            "media_id": "media_id_1752508051510145",
+            "p2m_id": "p2m_id_1752508060227967",
+            "entity_name": "Nguyễn Phương Hằng",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752508252199101",
+            "p2m_id": "p2m_id_1752508260707267",
+            "entity_name": "Trương Mỹ Lan",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752508252199101",
+            "p2m_id": "p2m_id_1752508278885770",
+            "entity_name": "Trần Thị Mỹ Dung",
+            "customer_role": "Đồng phạm"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752506646783633",
+            "p2m_id": "p2m_id_1752506664613827",
+            "entity_name": "Lê Thị Thúy Phương",
+            "customer_role": "Tham gia"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản",
+            "media_id": "media_id_1752508094916843",
+            "p2m_id": "p2m_id_1752508121120936",
+            "entity_name": "Võ Tấn Hoàng Văn",
+            "customer_role": "Đồng phạm"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752507220082644",
+            "p2m_id": "p2m_id_1752507243056067",
+            "entity_name": "Nguyễn Phú Xuân",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752507064399447",
+            "p2m_id": "p2m_id_1752507095939125",
+            "entity_name": "Bùi Văn Hùng",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752508252199101",
+            "p2m_id": "p2m_id_1752508287510656",
+            "entity_name": "Đinh Văn Thành",
+            "customer_role": "Đồng phạm"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản",
+            "media_id": "media_id_1752508094916843",
+            "p2m_id": "p2m_id_1752508195395405",
+            "entity_name": "Đinh Văn Thành",
+            "customer_role": "Đồng phạm"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của Nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+            "media_id": "media_id_1752506278013855",
+            "p2m_id": "p2m_id_1752506321619996",
+            "entity_name": "Nguyễn Phương Hằng",
+            "customer_role": "Chủ mưu"
+          },
+          {
+            "legal_status": "Đã kết án",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "media_id": "media_id_1752508252199101",
+            "p2m_id": "p2m_id_1752508269060204",
+            "entity_name": "Trương Mỹ Lan",
+            "customer_role": "Chủ mưu"
+          }
+        ],
+        "organizer_risk_analysis": [
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752506342061619",
+            "o2m_id": "o2m_id_1752506388451215",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản",
+            "entity_name": "Tập đoàn Vạn Thịnh Phát",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đã kết án",
+            "media_id": "media_id_1752506129101623",
+            "o2m_id": "o2m_id_1752506152331041",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Rửa tiền",
+            "entity_name": "GRUPO UNTER EMPRESARIAL S.A. DE C.V.",
+            "customer_role": "Giúp sức hoặc thực hiện một phần",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752506342061619",
+            "o2m_id": "o2m_id_1752506360093878",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Vi phạm quy định về cho vay",
+            "entity_name": "Ngân hàng TMCP Sài Gòn (SCB)",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752508252199101",
+            "o2m_id": "o2m_id_1752508269060295",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "entity_name": "Tập đoàn Vạn Thịnh Phát",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Tin chưa rõ ràng",
+            "media_id": "media_id_1752506032806429",
+            "o2m_id": "o2m_id_1752506032806671",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Vi phạm dân sự / hành chính",
+            "entity_name": "Công ty Cổ phần Đại Nam",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đã kết án",
+            "media_id": "media_id_1752507113664518",
+            "o2m_id": "o2m_id_1752507134484859",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản/Hối lộ",
+            "entity_name": "Tập đoàn Vạn Thịnh Phát",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752508252199101",
+            "o2m_id": "o2m_id_1752508287510720",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Chiếm đoạt tài sản",
+            "entity_name": "Ngân hàng TMCP Sài Gòn (SCB)",
+            "customer_role": "Bên liên quan bị động",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752508094916843",
+            "o2m_id": "o2m_id_1752508110501202",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản",
+            "entity_name": "Tập đoàn Vạn Thịnh Phát",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đã kết án",
+            "media_id": "media_id_1752506605587017",
+            "o2m_id": "o2m_id_1752506615871513",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+            "entity_name": "Công ty Cổ phần Đại Nam",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+            "media_id": "media_id_1752508051510145",
+            "o2m_id": "o2m_id_1752508074605332",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Vi phạm dân sự / hành chính / tranh chấp nhỏ",
+            "entity_name": "Công ty Cổ phần Đại Nam",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752506576993321",
+            "o2m_id": "o2m_id_1752506590156784",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của Nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+            "entity_name": "Công ty CP Đại Nam",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đã kết án",
+            "media_id": "media_id_1752508362186387",
+            "o2m_id": "o2m_id_1752508379046276",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản/Đưa hối lộ/Lừa đảo chiếm đoạt tài sản/Rửa tiền",
+            "entity_name": "Tập đoàn Vạn Thịnh Phát",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752506431325505",
+            "o2m_id": "o2m_id_1752506445158465",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham nhũng",
+            "entity_name": "Tập đoàn Vạn Thịnh Phát",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752507620454275",
+            "o2m_id": "o2m_id_1752507771957397",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Rửa tiền",
+            "entity_name": "PULLMAN GLOBAL SOLUTIONS LLC",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Tin chưa rõ ràng",
+            "media_id": "media_id_1752506278013855",
+            "o2m_id": "o2m_id_1752506304601789",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Lợi dụng các quyền tự do dân chủ xâm phạm lợi ích của Nhà nước, quyền, lợi ích hợp pháp của tổ chức, cá nhân",
+            "entity_name": "Công ty Cổ phần Đại Nam",
+            "customer_role": "Tổ chức thực hiện hành vi vi phạm",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752508094916843",
+            "o2m_id": "o2m_id_1752508195395476",
+            "org_id": "org_id_1752506032806508",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham ô tài sản",
+            "entity_name": "Ngân hàng SCB",
+            "customer_role": "Bên liên quan bị động",
+            "organization_name": "Tập đoàn Vạn Thịnh Phát",
+            "organization_type": null
+          },
+          {
+            "legal_status": "Đang trong quá trình điều tra",
+            "media_id": "media_id_1752506431325505",
+            "o2m_id": "o2m_id_1752506524921367",
+            "org_id": "org_id_1752506524920800",
+            "role_in_event": null,
+            "source_level": null,
+            "violation_type": "Tham nhũng",
+            "entity_name": "Ngân hàng SCB",
+            "customer_role": "Tham gia",
+            "organization_name": "Ngân hàng SCB",
+            "organization_type": null
+          }
+        ]
+      },
+      "ml_prediction": {
+        "prediction": 3,
+        "risk_level": "AML cao",
+        "probabilities": {
+          "Class_0_Very Low": 0.09946725450828173,
+          "Class_1_Low": 0.04713242760979954,
+          "Class_2_Medium": 0.20105918768160908,
+          "Class_3_High": 0.3392523612312616,
+          "Class_4_Very High": 0.3130887689690481
+        },
+        "model_input": {
+          "residence_area": "Không rõ",
+          "occupation": "Chủ tịch Tập đoàn Vạn Thịnh Phát",
+          "age": 68,
+          "per_violation_type_1": "Tham ô tài sản",
+          "per_legal_status_1": "Đã kết án",
+          "per_role_1": "Chủ mưu",
+          "per_violation_type_2": "Đưa hối lộ",
+          "per_legal_status_2": "Đã kết án",
+          "per_role_2": "Chủ mưu",
+          "per_violation_type_3": "Lừa đảo chiếm đoạt tài sản",
+          "per_legal_status_3": "Đã kết án",
+          "per_role_3": "Chủ mưu",
+          "per_violation_type_4": "Rửa tiền",
+          "per_legal_status_4": "Đã kết án",
+          "per_role_4": "Chủ mưu",
+          "per_violation_type_5": "Vận chuyển trái phép tiền tệ qua biên giới",
+          "per_legal_status_5": "Đã kết án",
+          "per_role_5": "Chủ mưu",
+          "org_violation_type_1": "Tham ô tài sản",
+          "org_legal_status_1": "Đã kết án",
+          "org_role_1": "Tổ chức thực hiện hành vi vi phạm",
+          "org_violation_type_2": "Rửa tiền",
+          "org_legal_status_2": "Đã kết án",
+          "org_role_2": "Tổ chức thực hiện hành vi vi phạm",
+          "org_violation_type_3": "Vi phạm quy định về cho vay",
+          "org_legal_status_3": "Đang trong quá trình điều tra",
+          "org_role_3": "Tổ chức thực hiện hành vi vi phạm",
+          "org_violation_type_4": "Chiếm đoạt tài sản",
+          "org_legal_status_4": "Đang trong quá trình điều tra",
+          "org_role_4": "Tổ chức thực hiện hành vi vi phạm",
+          "org_violation_type_5": "Vi phạm dân sự",
+          "org_legal_status_5": "Đang trong quá trình điều tra / truy tố / chưa có phán quyết",
+          "org_role_5": "Tổ chức thực hiện hành vi vi phạm"
+        }
+      }
+    },
+    "person_name": "Trương Mỹ Lan",
+    "error": null
+  }

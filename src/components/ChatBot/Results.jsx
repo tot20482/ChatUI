@@ -114,17 +114,36 @@ const Results = ({ responseData, setIsIndividual, setIsOrganization }) => {
         )}
       </div>
 
-      {/* Violation Types */}
-      {response.details && response.details.violation_types && (
-        <div className="mt-6 p-4 bg-red-50 rounded-lg">
-          <h3 className="text-xl font-bold text-red-800 mb-3">Các loại vi phạm</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-            {response.details.violation_types.map((violation, idx) => (
-              <div key={idx} className="bg-white p-2 rounded border text-sm">
-                {violation}
+      {/* Violation Types - Split into Individual and Organization */}
+      {response.details && (
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Individual Violations */}
+          {response.details.violation_types && (
+            <div className="p-4 bg-green-50 rounded-lg">
+              <h3 className="text-xl font-bold text-green-800 mb-3">Vi phạm Cá nhân</h3>
+              <div className="grid grid-cols-1 gap-2">
+                {response.details.violation_types.individual.map((violation, idx) => (
+                  <div key={idx} className="bg-white p-2 rounded border text-sm">
+                    {violation}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          )}
+          
+          {/* Organization Violations */}
+          {response.details.violation_types && (
+            <div className="p-4 bg-blue-50 rounded-lg">
+              <h3 className="text-xl font-bold text-blue-800 mb-3">Vi phạm Tổ chức</h3>
+              <div className="grid grid-cols-1 gap-2">
+                {response.details.violation_types.organization.map((violation, idx) => (
+                  <div key={idx} className="bg-white p-2 rounded border text-sm">
+                    {violation}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
