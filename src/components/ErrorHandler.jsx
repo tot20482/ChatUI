@@ -14,8 +14,8 @@ const ErrorHandler = ({ responseData, onDismiss }) => {
     // Check if responseData contains an error message
     if (responseData && 
         responseData.response && 
-        responseData.response.message && 
-        !responseData.success) {
+        responseData.response.message) {
+      // Show error regardless of success flag - the presence of message indicates an error
       setErrorMessage(responseData.response.message);
       setVisible(true);
     } else {
