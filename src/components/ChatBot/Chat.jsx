@@ -13,6 +13,12 @@ export default function Chat() {
   const [isIndividual, setIsIndividual] = useState(false);
   const [isOrganization, setIsOrganization] = useState(false);
   const [searchMode, setSearchMode] = useState("text"); // "text" or "form"
+  const questions = [
+    "AI solutions for AML compliance in banking",
+    "Automated adverse media screening tools for financial institutions",
+    "Real-time AML risk scoring platforms",
+    "Best AML software with NLP and machine learning",
+  ];
 
   const handleApiCall = async (searchQuery) => {
     setLoading(true);
@@ -62,7 +68,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full p-6">
+    <div className="flex flex-col  items-center w-full p-6">
       <div className="mb-8 w-full flex justify-center items-center">
         <h1 className="text-3xl font-semibold">Bạn muốn hỏi cái gì?</h1>
       </div>
@@ -164,6 +170,21 @@ export default function Chat() {
           organizationData={responseData.response.result.organization_AML}
         />
       )}
+
+      <div
+        className={`grid gap-2 mt-6 w-[60%] ${
+          questions.every((q) => q.length < 60) ? "grid-cols-2" : "grid-cols-1"
+        }`}
+      >
+        {questions.map((q, idx) => (
+          <div
+            key={idx}
+            className="px-4 py-2 rounded-lg text-sm bg-white shadow hover:bg-gray-50 cursor-pointer"
+          >
+            {q}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
