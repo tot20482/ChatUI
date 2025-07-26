@@ -179,7 +179,7 @@ export default function Chat() {
         {questions.map((q, idx) => (
           <div
             key={idx}
-            className="px-4 py-2 rounded-lg text-sm bg-white shadow hover:bg-gray-50 cursor-pointer"
+            className="px-4 py-2 rounded-lg text-sm bg-gray-50 shadow hover:bg-gray-200 cursor-pointer"
           >
             {q}
           </div>

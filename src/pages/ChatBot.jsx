@@ -6,13 +6,14 @@ const ChatBot = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="w-full h-screen flex">
-      <div className={`${isSidebarOpen ? "w-[20%]" : "w-[5%]"} h-full`}>
+    <div className="w-full flex">
+      <div className={`${isSidebarOpen ? "w-[20%]" : "w-[5%]"} h-screen`}>
         <History
           isSidebarOpen={isSidebarOpen}
           setSidebarOpen={setSidebarOpen}
         />
       </div>
+      +
       <div
         className={`${
           isSidebarOpen ? "w-[80%]" : "w-[95%]"
