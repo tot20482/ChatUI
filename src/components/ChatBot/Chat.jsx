@@ -455,13 +455,13 @@ export default function Chat() {
         <div className="mt-6 flex flex-wrap gap-3 justify-center">
           <button
             onClick={() => showSampleData("success")}
-            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 cursor-pointer transition-colors"
           >
             Hiển thị dữ liệu mẫu thành công
           </button>
           <button
             onClick={() => showSampleData("error")}
-            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 cursor-pointer transition-colors"
           >
             Hiển thị lỗi mẫu
           </button>
