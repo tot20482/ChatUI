@@ -5,15 +5,19 @@ import Individual from "./Individual";
 import Organization from "./Organization";
 import PersonForm from "./PersonForm";
 import ErrorHandler from "../ErrorHandler";
+import { result } from "../../mocks";
+import BoxResult from "./BoxResult";
 
 export default function Chat() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [error, setError] = useState(null);
-  const [isIndividual, setIsIndividual] = useState(false);
-  const [isOrganization, setIsOrganization] = useState(false);
+  // const [isIndividual, setIsIndividual] = useState(false);
+  // const [isOrganization, setIsOrganization] = useState(false);
   const [searchMode, setSearchMode] = useState("text"); // "text", "form", or "chatbot"
+  const [boxResult, setBoxResult] = useState([]);
+  const [showBox, setShowBox] = useState(false);
   const [chatMessages, setChatMessages] = useState([
     {
       type: "bot",
@@ -118,6 +122,16 @@ export default function Chat() {
     setLoading(true);
     setError(null);
     setResponseData(null);
+
+    if (
+      searchMode === "text" ||
+      searchMode === "form" ||
+      searchMode === "chatbot"
+    ) {
+      // set mock data vào state
+      setBoxResult(result);
+      setShowBox(true); // hiển thị màn hình fixed
+    }
 
     // Add user message to chat if in chatbot mode
     if (searchMode === "chatbot") {
@@ -484,19 +498,19 @@ export default function Chat() {
       )}
 
       {/* Results Display - Only show if response is successful and has no error message */}
-      {responseData &&
+      {/* {responseData &&
         responseData.success &&
         !responseData.response.message &&
         !loading && (
-          <Results
-            responseData={responseData}
-            setIsIndividual={setIsIndividual}
-            setIsOrganization={setIsOrganization}
-          />
-        )}
+          // <Results
+          //   responseData={responseData}
+          //   setIsIndividual={setIsIndividual}
+          //   setIsOrganization={setIsOrganization}
+          // />
+        )} */}
 
       {/* Modal Components */}
-      {isIndividual && responseData?.response?.result?.invidual_AML && (
+      {/* {isIndividual && responseData?.response?.result?.invidual_AML && (
         <Individual
           setIsIndividual={setIsIndividual}
           individualData={responseData.response.result.invidual_AML}
@@ -508,6 +522,10 @@ export default function Chat() {
           setIsOrganization={setIsOrganization}
           organizationData={responseData.response.result.organization_AML}
         />
+      )} */}
+
+      {showBox && (
+        <BoxResult onClose={() => setShowBox(false)} data={boxResult} />
       )}
 
       <div
