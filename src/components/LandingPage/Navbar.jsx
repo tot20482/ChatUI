@@ -1,39 +1,43 @@
-import logo from "../../assets/logouit.svg";
 import VpbankLogo from "../../assets/VPBank_logo.png";
 
 const Navbar = ({ handleGetStarted }) => {
   return (
-    <div className="px-30 py-4 flex items-center justify-between">
+    <div className="pr-30 py-4 flex items-center justify-between pl-15">
       <div className="flex items-center space-x-6">
-        <img src={logo} alt="Logo UIT" className="w-18 h-18" />
+        <button className="px-2 py-4 hover:cursor-pointer">
+          <a href="#solutions" className="text-lg">
+            Solutions
+          </a>
+        </button>
+        <button className="px-2 py-4 hover:cursor-pointer">
+          <a href="#userGuide" className="text-lg">
+            User Guide
+          </a>
+        </button>
+        <button className="px-2 py-4 hover:cursor-pointer">
+          <a href="#aboutUs" className="text-lg">
+            About Us
+          </a>
+        </button>
+      </div>
+      <div className="flex justify-center items-center">
         <img src={VpbankLogo} alt="Logo VPBANK" className="h-12" />
       </div>
-      <div className="flex items-center space-x-14">
-        <div className="flex items-center space-x-4">
-          <button className="px-4 py-4 rounded-md hover:cursor-pointer">
-            <p className="text-md font-medium uppercase text-[#298761]">
-              About Us
-            </p>
-          </button>
-          <button className="px-4 py-4 rounded-md hover:cursor-pointer">
-            <p className="text-md font-medium uppercase text-[#298761]">
-              Contact
-            </p>
-          </button>
-        </div>
-        <div>
-          <button
-            onClick={handleGetStarted}
-            className="px-8 py-3 rounded-4xl bg-[#00b550]
+      <div className="flex items-center space-x-8">
+        <button className="px-6 py-2 border-[1.5px] border-[#00b550] rounded-xl hover:cursor-pointer">
+          <p className="text-lg">Sign in</p>
+        </button>
+        <button
+          onClick={handleGetStarted}
+          className="px-6 py-2 rounded-xl bg-[#00b550]
               shadow-[0_0_6px_1px_rgba(0,190,80,0.6),0_0_40px_8px_rgba(0,190,80,0.4)] 
               text-white
               transition-all duration-300 ease-out
               hover:scale-105 hover:brightness-110 hover:cursor-pointer 
               active:scale-100"
-          >
-            <p className="text-md font-bold text-white">Get Started</p>
-          </button>
-        </div>
+        >
+          <p className="text-lg font-semibold text-white">Sign up</p>
+        </button>
       </div>
     </div>
   );

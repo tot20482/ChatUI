@@ -6,7 +6,7 @@ const Header = ({ handleGetStarted }) => {
       style={{
         background: "linear-gradient(to right, #094993, #38a44a)",
       }}
-      className="w-[95%] h-[95%] rounded-t-4xl px-16 flex justify-center items-center space-x-28"
+      className="w-[95%] h-[95%] rounded-4xl px-16 flex justify-center items-center space-x-28"
     >
       <div className="flex flex-col justify-center items-start space-y-6">
         <h1 className="text-5xl font-bold leading-tight mb-6 text-white">
@@ -14,10 +14,10 @@ const Header = ({ handleGetStarted }) => {
           <span className="text-[#00b550]">AML Risk Analysis</span> for <br />
           Banks Institutions
         </h1>
-        <p className="text-white">
+        <p className="text-white text-lg ">
           Automatically detect and assess adverse media and blacklist risks —
-          enabling fast insights, <br /> accurate scoring, and robust compliance
-          to protect your organization from financial crime.
+          enabling <br /> fast insights, accurate scoring, and robust compliance
+          to protect your <br /> organization from financial crime.
         </p>
         <button
           onClick={handleGetStarted}
