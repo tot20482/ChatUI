@@ -129,8 +129,8 @@ const PersonForm = ({ onSubmit, loading }) => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 mt-6">
-      <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">
+    <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl px-8 py-4 mt-4">
+      <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
         Thông tin cá nhân
       </h3>
 
@@ -153,7 +153,7 @@ const PersonForm = ({ onSubmit, loading }) => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Nhập họ và tên"
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none  ${
                   errors.name ? "border-red-500" : "border-gray-300"
                 }`}
                 disabled={loading}
@@ -180,7 +180,7 @@ const PersonForm = ({ onSubmit, loading }) => {
                 placeholder="Nhập tuổi (tùy chọn)"
                 min="0"
                 max="150"
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none  ${
                   errors.age ? "border-red-500" : "border-gray-300"
                 }`}
                 disabled={loading}
@@ -206,7 +206,7 @@ const PersonForm = ({ onSubmit, loading }) => {
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none "
                 disabled={loading}
               >
                 <option value="">Chọn giới tính (tùy chọn)</option>
@@ -231,7 +231,7 @@ const PersonForm = ({ onSubmit, loading }) => {
                 value={formData.hometown}
                 onChange={handleChange}
                 placeholder="Nhập quê quán (tùy chọn)"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none "
                 disabled={loading}
               />
             </div>
@@ -254,7 +254,7 @@ const PersonForm = ({ onSubmit, loading }) => {
                 value={formData.occupation}
                 onChange={handleChange}
                 placeholder="Nhập chức vụ hoặc vị trí (tùy chọn)"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none "
                 disabled={loading}
               />
             </div>
@@ -274,7 +274,7 @@ const PersonForm = ({ onSubmit, loading }) => {
                 value={formData.organization}
                 onChange={handleChange}
                 placeholder="Nhập tên tổ chức (tùy chọn)"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none "
                 disabled={loading}
               />
             </div>
@@ -436,7 +436,7 @@ const PersonForm = ({ onSubmit, loading }) => {
                   value="Cư trú"
                   checked={formData.isCitizen === "Cư trú"}
                   onChange={handleChange}
-                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                  className="w-4 h-4 text-blue-600 border-gray-300"
                 />
                 <label
                   htmlFor="citizen"
@@ -453,7 +453,7 @@ const PersonForm = ({ onSubmit, loading }) => {
                   value="Không cư trú"
                   checked={formData.isCitizen === "Không cư trú"}
                   onChange={handleChange}
-                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                  className="w-4 h-4 text-blue-600 border-gray-300"
                 />
                 <label
                   htmlFor="nonCitizen"
@@ -578,7 +578,7 @@ const PersonForm = ({ onSubmit, loading }) => {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-[#38a44a] text-white py-3 px-6 rounded-md cursor-pointer hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+              className="flex-1 bg-[#38a44a] text-white py-3 px-6 rounded-md cursor-pointer hover:brightness-110 focus:outline-none focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
             >
               {loading ? (
                 <span className="flex items-center justify-center">
@@ -594,7 +594,7 @@ const PersonForm = ({ onSubmit, loading }) => {
               type="button"
               onClick={handleReset}
               disabled={loading}
-              className="flex-1 sm:flex-none bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+              className="flex-1 sm:flex-none bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600 focus:outline-none  focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
             >
               Đặt lại
             </button>

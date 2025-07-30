@@ -1,25 +1,27 @@
 import { useState } from "react";
-import Chat from "../components/ChatBot/Chat";
 import History from "../components/ChatBot/History";
+import NavBar from "../components/SearchMode/NavBar";
+import Chat from "../components/SearchMode/Chatbot/Chat";
 
 const ChatBot = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
+  const [isHistory, setIsHistory] = useState(false);
   return (
-    <div className="w-full min-h-screen flex">
-      <div className={`${isSidebarOpen ? "w-[20%]" : "w-[5%]"}`}>
-        <History
-          isSidebarOpen={isSidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-        />
-      </div>
-      <div
-        className={`${
-          isSidebarOpen ? "w-[80%]" : "w-[95%]"
-        } flex justify-center items-center`}
-      >
-        <Chat />
-      </div>
+    <div className="h-full w-full">
+      <NavBar isHistory={isHistory} setIsHistory={setIsHistory} />
+      {isHistory === true ? (
+        <div className="min-h-[87vh] w-full flex">
+          <div className="w-[20%]">
+            <History />
+          </div>
+          <div className="w-[80%] flex justify-center items-center">
+            <Chat />
+          </div>
+        </div>
+      ) : (
+        <div className="w-full min-h-[87vh]  flex justify-center items-center">
+          <Chat />
+        </div>
+      )}
     </div>
   );
 };
