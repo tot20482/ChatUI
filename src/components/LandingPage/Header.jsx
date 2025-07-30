@@ -1,6 +1,6 @@
 import Robot from "../../assets/robot.png";
 
-const Header = ({ handleGetStarted }) => {
+const Header = ({ setIsSignIn }) => {
   return (
     <div
       style={{
@@ -20,7 +20,9 @@ const Header = ({ handleGetStarted }) => {
           to protect your <br /> organization from financial crime.
         </p>
         <button
-          onClick={handleGetStarted}
+          onClick={() => {
+            setIsSignIn(true);
+          }}
           className="px-10 py-4 rounded-4xl bg-[#00b550]
               shadow-[0_0_6px_1px_rgba(0,190,80,0.6),0_0_40px_8px_rgba(0,190,80,0.4)] 
               text-white

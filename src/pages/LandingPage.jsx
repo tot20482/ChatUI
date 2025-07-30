@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/LandingPage/Navbar";
 import Header from "../components/LandingPage/Header";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Solutions from "../components/LandingPage/Solutions";
 import UserGuide from "../components/LandingPage/UserGuide";
 import AboutUs from "../components/LandingPage/AboutUs";
 import Footer from "../components/LandingPage/Footer";
 
 const LandingPage = () => {
-  const navigate = useNavigate();
-  const handleGetStarted = () => {
-    navigate("/chatbot");
-  };
+  const [isSignIn, setIsSignIn] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
+  // const navigate = useNavigate();
+  // const handleGetStarted = () => {
+  //   navigate("/chatbot");
+  // };
   return (
     <div className="w-full">
       <div className="w-full h-screen">
         <div className="h-[15%]">
-          <Navbar handleGetStarted={handleGetStarted} />
+          <Navbar
+            isSignIn={isSignIn}
+            setIsSignIn={setIsSignIn}
+            isSignUp={isSignUp}
+            setIsSignUp={setIsSignUp}
+          />
         </div>
         <div className="h-[85%] flex justify-center">
-          <Header handleGetStarted={handleGetStarted} />
+          <Header setIsSignIn={setIsSignIn} />
         </div>
       </div>
       <Solutions />
