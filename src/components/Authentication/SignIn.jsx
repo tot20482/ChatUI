@@ -40,7 +40,7 @@ const SignIn = ({ show, onClose }) => {
           <img src={signin} alt="Sign in" className="h-[50%]" />
         </div>
 
-        <form className="space-y-4 mt-6" onClick={handleSubmit}>
+        <form className="space-y-4 mt-6" onSubmit={handleSubmit}>
           <div>
             <label className="block text-lg text-white mb-1">Email</label>
             <input
