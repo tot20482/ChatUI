@@ -52,8 +52,8 @@ const TextSearch = () => {
           onSubmit={handleSubmit}
           className="flex items-center overflow-hidden rounded-3xl px-4 py-4"
         >
-          <div className="mr-3">
-            <img src={search} alt="Search icon" className="h-5 w-5" />
+          <div className="mr-3 flex justify-center items-center">
+            <img src={search} alt="Search icon" className="h-6 w-6" />
           </div>
           <input
             type="text"
