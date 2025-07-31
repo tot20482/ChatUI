@@ -11,6 +11,22 @@ const SignUp = ({ show }) => {
       }}
     >
       <div className="w-[85%] h-[90%] bg-white rounded-4xl flex">
+        <div className="w-[40%] h-full p-10">
+          <div
+            className="w-full h-full rounded-4xl flex flex-col justify-center items-start pl-16"
+            style={{
+              background: "linear-gradient(to right, #094993, #38a44a)",
+            }}
+          >
+            <p className="text-3xl font-semibold tracking-wide text-white">
+              Create your <br /> Account
+            </p>
+            <p className="text-medium text-white mt-2">
+              Try our AI-powered system and <br /> discover smarter AML risk
+              insights.
+            </p>
+          </div>
+        </div>
         <div className="w-[60%] flex flex-col justify-center pl-24">
           <p className="font-bold text-4xl">Sign Up</p>
           <form className="space-y-4 mt-8">
@@ -20,7 +36,7 @@ const SignUp = ({ show }) => {
               </label>
               <input
                 type="email"
-                className="w-[80%] px-4 py-2 bg-gray-400 rounded-md focus:outline-none focus:border-[1px] focus:border-[#38a44a]"
+                className="w-[80%] px-4 py-2 bg-gray-200 rounded-md focus:outline-none focus:border-[1px] focus:border-[#38a44a]"
                 placeholder="Enter your email"
               />
             </div>
@@ -30,7 +46,7 @@ const SignUp = ({ show }) => {
               </label>
               <input
                 type="password"
-                className="w-[80%] px-4 py-2 bg-gray-400 rounded-md focus:outline-none focus:border-[1px] focus:border-[#38a44a]"
+                className="w-[80%] px-4 py-2 bg-gray-200 rounded-md focus:outline-none focus:border-[1px] focus:border-[#38a44a]"
                 placeholder="Enter your password"
               />
             </div>
@@ -56,22 +72,6 @@ const SignUp = ({ show }) => {
               <p className="text-lg">Sign Up</p>
             </button>
           </form>
-        </div>
-        <div className="w-[40%] h-full p-10">
-          <div
-            className="w-full h-full rounded-4xl flex flex-col justify-center items-start pl-16"
-            style={{
-              background: "linear-gradient(to right, #094993, #38a44a)",
-            }}
-          >
-            <p className="text-3xl font-semibold tracking-wide text-white">
-              Create your <br /> Account
-            </p>
-            <p className="text-medium text-white mt-2">
-              Try our AI-powered system and <br /> discover smarter AML risk
-              insights.
-            </p>
-          </div>
         </div>
       </div>
     </div>

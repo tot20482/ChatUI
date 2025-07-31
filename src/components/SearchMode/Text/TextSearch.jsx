@@ -1,20 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import search from "../../../assets/search.png";
 import historyIcon from "../../../assets/history.png";
+import ResultList from "../ResultList";
+import Loading from "../../Loading";
 
 const TextSearch = () => {
   const [searchText, setSearchText] = useState("");
   const [history, setHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
   const boxRef = useRef();
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // Load from localStorage on mount
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("search-history")) || [];
     setHistory(stored);
   }, []);
 
-  // Hide dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (boxRef.current && !boxRef.current.contains(e.target)) {
@@ -25,24 +27,51 @@ const TextSearch = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!searchText.trim()) return;
-
-    const newHistory = [
-      searchText,
-      ...history.filter((item) => item !== searchText),
-    ];
+  const submitSearch = async (query) => {
+    const newHistory = [query, ...history.filter((item) => item !== query)];
     const trimmed = newHistory.slice(0, 10);
     setHistory(trimmed);
     localStorage.setItem("search-history", JSON.stringify(trimmed));
     setShowHistory(false);
-    console.log("Searching:", searchText);
+    setLoading(true); // Start loading
+
+    try {
+      const response = await fetch("http://18.143.201.110:80/get-name-list", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          person_id: query,
+          top_k: 5,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Failed to fetch");
+
+      const result = await response.json();
+      setResults(result.results);
+    } catch (err) {
+      console.error("API error:", err);
+    } finally {
+      setLoading(false); // End loading
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!searchText.trim()) return;
+    submitSearch(searchText);
   };
 
   const handleSelect = (text) => {
     setSearchText(text);
-    setShowHistory(false);
+    submitSearch(text);
+  };
+
+  const handleCloseResults = () => {
+    setSearchText("");
+    setResults([]);
   };
 
   return (
@@ -50,7 +79,7 @@ const TextSearch = () => {
       <div ref={boxRef} className="w-[60%] max-w-2xl bg-white rounded-3xl">
         <form
           onSubmit={handleSubmit}
-          className="flex items-center overflow-hidden rounded-3xl px-4 py-4"
+          className="flex items-center overflow-hidden rounded-3xl px-4 py-3"
         >
           <div className="mr-3 flex justify-center items-center">
             <img src={search} alt="Search icon" className="h-6 w-6" />
@@ -58,14 +87,19 @@ const TextSearch = () => {
           <input
             type="text"
             value={searchText}
-            onFocus={() => history.length > 0 && setShowHistory(true)}
             onChange={(e) => setSearchText(e.target.value)}
+            onFocus={() => history.length > 0 && setShowHistory(true)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSubmit(e);
+              }
+            }}
             placeholder="Search..."
-            className="flex-1 text-gray-800 text-sm outline-none border-none bg-transparent"
+            className="flex-1 text-gray-800 text-[16px] outline-none border-none bg-transparent"
           />
+          <button type="submit" className="hidden"></button>{" "}
         </form>
 
-        {/* Dropdown history below input */}
         {showHistory && history.length > 0 && (
           <div className="max-h-[200px] overflow-y-auto">
             {history.map((item, index) => (
@@ -83,6 +117,11 @@ const TextSearch = () => {
           </div>
         )}
       </div>
+      {loading && <Loading />}
+
+      {results.length > 0 && (
+        <ResultList data={results} onClose={handleCloseResults} />
+      )}
     </div>
   );
 };

@@ -13,14 +13,16 @@ const SignIn = ({ show, onClose }) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const email = formData.get("email");
-    const password = formData.get("password");
+    const email = formData.get("email").trim();
+    const password = formData.get("password").trim();
 
-    if (email && password) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailRegex.test(email) && password.length > 0) {
       onClose();
       navigate("/home");
     } else {
-      alert("Please fill in all fields.");
+      alert("Email không hợp lệ hoặc mật khẩu trống.");
     }
   };
 
@@ -46,7 +48,7 @@ const SignIn = ({ show, onClose }) => {
             <input
               type="email"
               name="email"
-              className="w-full px-4 py-2 bg-gray-400 rounded-md focus:outline-none focus:border-[1px] focus:border-[#38a44a]"
+              className="w-full px-4 py-2 bg-white rounded-md focus:outline-none focus:border-[1px] focus:border-[#38a44a]"
               placeholder="Enter your email"
               required
             />
@@ -56,7 +58,7 @@ const SignIn = ({ show, onClose }) => {
             <input
               type="password"
               name="password"
-              className="w-full px-4 py-2 bg-gray-400 rounded-md focus:outline-none focus:border-[1px] focus:border-[#38a44a]"
+              className="w-full px-4 py-2 bg-white rounded-md focus:outline-none focus:border-[1px] focus:border-[#38a44a]"
               placeholder="Enter your password"
               required
             />

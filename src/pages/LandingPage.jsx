@@ -25,7 +25,7 @@ const LandingPage = () => {
             setIsSignUp={setIsSignUp}
           />
         </div>
-        <div className="h-[85%] flex justify-center">
+        <div className="h-[85%] flex justify-center mt-4">
           <Header setIsSignIn={setIsSignIn} />
         </div>
       </div>

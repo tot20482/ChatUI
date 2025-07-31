@@ -1,140 +1,4 @@
-import { useState } from "react";
-
-const NewsPopup = ({ isOpen, onClose, newsData, loading }) => {
-  if (!isOpen) return null;
-
-  const getSentimentColor = (sentiment) => {
-    switch (sentiment?.toLowerCase()) {
-      case "positive":
-        return "bg-green-100 text-green-800";
-      case "negative":
-        return "bg-red-100 text-red-800";
-      case "neutral":
-        return "bg-blue-100 text-blue-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
-
-  const formatDate = (timestamp) => {
-    if (!timestamp) return "N/A";
-
-    try {
-      // If timestamp is a full date string
-      if (timestamp.includes("-") || timestamp.includes("/")) {
-        return new Date(timestamp).toLocaleDateString("vi-VN", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-
-      // If timestamp is a unix timestamp or similar number
-      const date = new Date(parseInt(timestamp));
-      if (!isNaN(date)) {
-        return date.toLocaleDateString("vi-VN", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      }
-
-      return timestamp;
-    } catch (error) {
-      console.error("Error formatting date:", error);
-      return timestamp;
-    }
-  };
-
-  return (
-    <div
-      className="fixed inset-0 z-60 flex items-center justify-center bg-black/50 backdrop-blur-sm cursor-pointer"
-      onClick={onClose}
-    >
-      <div
-        className="relative w-[80%] max-h-[80vh] rounded-xl bg-white p-6 overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3 className="text-xl font-bold text-gray-800 mb-4">
-          Bài báo liên quan
-        </h3>
-
-        {loading ? (
-          <div className="flex items-center justify-center py-8">
-            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-            <span className="ml-2">Đang tải bài báo...</span>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {newsData ? (
-              <div className="border border-gray-200 rounded-lg p-4">
-                <div className="flex flex-wrap justify-between items-center mb-4 gap-2">
-                  <h4 className="font-semibold text-gray-800">
-                    Media ID:{" "}
-                    <span className="font-mono text-sm">
-                      {newsData.media_id || "N/A"}
-                    </span>
-                  </h4>
-
-                  <div className="flex flex-wrap gap-2">
-                    {newsData.content?.news_sentiment_type && (
-                      <span
-                        className={`text-xs px-2 py-1 rounded-full ${getSentimentColor(
-                          newsData.content.news_sentiment_type
-                        )}`}
-                      >
-                        {newsData.content.news_sentiment_type}
-                      </span>
-                    )}
-
-                    {newsData.content?.recency && (
-                      <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-800">
-                        {newsData.content.recency}
-                      </span>
-                    )}
-
-                    {newsData.content?.created_at && (
-                      <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-800">
-                        {formatDate(newsData.content.created_at)}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="text-sm text-gray-600 border-t border-gray-100 pt-4">
-                  {newsData.content?.content ? (
-                    <div>
-                      {typeof newsData.content.content === "string" ? (
-                        <p className="whitespace-pre-wrap">
-                          {newsData.content.content}
-                        </p>
-                      ) : (
-                        <pre className="whitespace-pre-wrap bg-gray-50 p-3 rounded text-xs overflow-x-auto">
-                          {JSON.stringify(newsData.content.content, null, 2)}
-                        </pre>
-                      )}
-                    </div>
-                  ) : (
-                    <p>Không có nội dung chi tiết</p>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <p className="text-center text-gray-500 py-8">Không có dữ liệu</p>
-            )}
-          </div>
-        )}
-
-        <button
-          onClick={onClose}
-          className="mt-4 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
-        >
-          Đóng
-        </button>
-      </div>
-    </div>
-  );
-};
+import { useState, useMemo } from "react";
 
 const Individual = ({ setIsIndividual, individualData }) => {
   const [newsPopup, setNewsPopup] = useState({
@@ -144,18 +8,50 @@ const Individual = ({ setIsIndividual, individualData }) => {
     error: null,
   });
 
-  if (!individualData) return null;
+  // 🧠 Chuyển đổi dữ liệu từ API về dạng chuẩn
+  const personEntries = useMemo(() => {
+    const raw = individualData?.response?.result?.personal_risk_analysis;
 
-  const personEntries = Object.entries(individualData);
+    if (!Array.isArray(raw)) {
+      console.warn("Dữ liệu không hợp lệ.");
+      return [];
+    }
+
+    const transformed = {};
+
+    raw.forEach((item) => {
+      const person = item.person_name || "";
+      const violation = item.violation_type || "Không xác định";
+
+      if (!transformed[person]) {
+        transformed[person] = {};
+      }
+
+      transformed[person][violation] = {
+        customer_role: item.customer_role || "Không rõ",
+        legal_status: item.legal_status || "Không rõ",
+        media_ids: item.media_ids || [],
+      };
+    });
+
+    return Object.entries(transformed);
+  }, [individualData]);
 
   const handleMediaClick = async (mediaId) => {
+    console.log("📩 Bắt đầu gọi API mediaId:", mediaId);
+
     setNewsPopup({ isOpen: true, data: null, loading: true, error: null });
 
     try {
-      const response = await fetch(`http://localhost:8000/media/${mediaId}`);
+      const response = await fetch(`http://18.143.201.110:80/media/${mediaId}`);
+      console.log("✅ Response status:", response.status);
+
       const result = await response.json();
+      console.log("📦 Dữ liệu trả về:", result);
 
       if (response.ok && result.success) {
+        console.log("🟢 Thành công, set dữ liệu vào popup");
+
         setNewsPopup({
           isOpen: true,
           data: result,
@@ -163,18 +59,18 @@ const Individual = ({ setIsIndividual, individualData }) => {
           error: null,
         });
       } else {
-        const errorMessage =
-          result.error || `Failed to fetch media: ${response.statusText}`;
-        console.error("Failed to fetch media:", errorMessage);
+        console.warn("🟡 API trả về lỗi hoặc không success:", result.error);
+
         setNewsPopup({
           isOpen: true,
           data: null,
           loading: false,
-          error: errorMessage,
+          error: result.error || "Không lấy được nội dung bài báo",
         });
       }
     } catch (error) {
-      console.error("Error fetching media:", error);
+      console.error("🔴 Lỗi khi gọi API:", error);
+
       setNewsPopup({
         isOpen: true,
         data: null,
@@ -188,14 +84,12 @@ const Individual = ({ setIsIndividual, individualData }) => {
     setNewsPopup({ isOpen: false, data: null, loading: false, error: null });
   };
 
+  if (!individualData) return null;
+
   return (
     <>
       <div
-        className="
-              fixed inset-0 z-50  
-              flex items-center justify-center
-              bg-black/50 backdrop-blur-sm 
-            "
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
         onClick={() => setIsIndividual(false)}
       >
         <div
@@ -207,11 +101,8 @@ const Individual = ({ setIsIndividual, individualData }) => {
           </h2>
 
           <div className="flex flex-wrap justify-center gap-8 w-full">
-            {personEntries.map(([personName, violations], personIdx) => (
-              <div
-                key={personName}
-                className="w-full mb-8 border-b border-gray-200 pb-6"
-              >
+            {personEntries.map(([personName, violations]) => (
+              <div key={personName} className="w-full mb-4 pb-6">
                 <h3 className="text-xl font-bold text-green-800 mb-4 text-center">
                   {personName}
                 </h3>
@@ -223,21 +114,22 @@ const Individual = ({ setIsIndividual, individualData }) => {
                         key={violationType}
                         className="flex flex-col items-center bg-gray-50 p-4 rounded-lg"
                       >
-                        <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                        <h4 className="text-lg font-semibold text-gray-800">
                           Tội {idx + 1}
                         </h4>
-                        <div className="w-20 h-1 bg-green-500 my-2" />
-                        <p className="text-center text-sm text-gray-700 leading-snug mb-2">
-                          <strong>Loại:</strong> {violationType}
-                        </p>
-                        <p className="text-center text-sm text-gray-600 mb-2">
-                          <strong>Vai trò:</strong> {details.customer_role}
-                        </p>
-                        <p className="text-center text-sm text-gray-600 mb-3">
-                          <strong>Tình trạng:</strong> {details.legal_status}
-                        </p>
+                        <div className="w-14 h-[3px] bg-green-500 mb-4" />
+                        <div className="flex flex-col items-start w-full">
+                          <p className="text-sm text-gray-700 leading-snug mb-2">
+                            <strong>Loại:</strong> {violationType}
+                          </p>
+                          <p className="text-sm text-gray-600 mb-2">
+                            <strong>Vai trò:</strong> {details.customer_role}
+                          </p>
+                          <p className="text-sm text-gray-600 mb-3">
+                            <strong>Tình trạng:</strong> {details.legal_status}
+                          </p>
+                        </div>
 
-                        {/* Media IDs */}
                         {details.media_ids && details.media_ids.length > 0 && (
                           <div className="w-full">
                             <p className="text-xs text-gray-500 mb-2 text-center">
@@ -266,26 +158,20 @@ const Individual = ({ setIsIndividual, individualData }) => {
 
           <button
             onClick={() => setIsIndividual(false)}
-            className="
-                  mt-6 mx-auto block px-6 py-2 rounded-md
-                  bg-red-500 text-white font-semibold
-                  transition-all hover:brightness-110
-                  cursor-pointer
-                "
+            className="mt-6 px-6 py-2 rounded-md bg-red-500 text-white font-semibold hover:brightness-110 cursor-pointer"
           >
             Đóng
           </button>
         </div>
       </div>
 
-      <NewsPopup
+      {/* <NewsPopup
         isOpen={newsPopup.isOpen}
         onClose={closeNewsPopup}
         newsData={newsPopup.data}
         loading={newsPopup.loading}
       />
 
-      {/* Error handling */}
       {newsPopup.error && (
         <div className="fixed bottom-4 right-4 bg-red-500 text-white p-4 rounded-lg shadow-lg z-70">
           <p className="text-sm">Lỗi: {newsPopup.error}</p>
@@ -296,7 +182,7 @@ const Individual = ({ setIsIndividual, individualData }) => {
             Đóng
           </button>
         </div>
-      )}
+      )} */}
     </>
   );
 };
