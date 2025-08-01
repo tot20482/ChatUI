@@ -631,9 +631,13 @@ const PersonForm = ({ onSubmit, detailData, setDetailData }) => {
           </div>
         </form>
       </div>
-      {detailData.length > 0 && (
+      {Array.isArray(detailData) && detailData.length > 0 ? (
         <ResultList data={detailData} onClose={handleCloseResults} />
-      )}
+      ) : detailData && Array.isArray(detailData) ? (
+        <p className="text-center text-gray-500 mt-4">
+          Không tìm thấy kết quả phù hợp.
+        </p>
+      ) : null}
     </div>
   );
 };

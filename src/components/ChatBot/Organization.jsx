@@ -39,7 +39,9 @@ const Organization = ({ setShowOrganization, organizationData }) => {
     setNewsPopup({ isOpen: true, data: null, loading: true, error: null });
 
     try {
-      const response = await fetch(`http://localhost:8000/media/${mediaId}`);
+      const response = await fetch(
+        `https://dinhthienan203.id.vn/media/${mediaId}`
+      );
       const result = await response.json();
 
       if (response.ok && result.success) {
@@ -99,6 +101,7 @@ const Organization = ({ setShowOrganization, organizationData }) => {
                     ([violationType, details], idx) => (
                       <div
                         key={violationType}
+                        onClick={handleMediaClick}
                         className="flex flex-col items-center bg-gray-50 p-4 rounded-lg"
                       >
                         <h4 className="text-lg font-semibold text-gray-800">
