@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 
-const Individual = ({ setIsIndividual, individualData }) => {
+const Individual = ({ setShowIndividual, individualData }) => {
   const [newsPopup, setNewsPopup] = useState({
     isOpen: false,
     data: null,
@@ -8,7 +8,6 @@ const Individual = ({ setIsIndividual, individualData }) => {
     error: null,
   });
 
-  // 🧠 Chuyển đổi dữ liệu từ API về dạng chuẩn
   const personEntries = useMemo(() => {
     const raw = individualData?.response?.result?.personal_risk_analysis;
 
@@ -38,20 +37,14 @@ const Individual = ({ setIsIndividual, individualData }) => {
   }, [individualData]);
 
   const handleMediaClick = async (mediaId) => {
-    console.log("📩 Bắt đầu gọi API mediaId:", mediaId);
-
     setNewsPopup({ isOpen: true, data: null, loading: true, error: null });
 
     try {
       const response = await fetch(`http://18.143.201.110:80/media/${mediaId}`);
-      console.log("✅ Response status:", response.status);
 
       const result = await response.json();
-      console.log("📦 Dữ liệu trả về:", result);
 
       if (response.ok && result.success) {
-        console.log("🟢 Thành công, set dữ liệu vào popup");
-
         setNewsPopup({
           isOpen: true,
           data: result,
@@ -59,8 +52,6 @@ const Individual = ({ setIsIndividual, individualData }) => {
           error: null,
         });
       } else {
-        console.warn("🟡 API trả về lỗi hoặc không success:", result.error);
-
         setNewsPopup({
           isOpen: true,
           data: null,
@@ -69,8 +60,6 @@ const Individual = ({ setIsIndividual, individualData }) => {
         });
       }
     } catch (error) {
-      console.error("🔴 Lỗi khi gọi API:", error);
-
       setNewsPopup({
         isOpen: true,
         data: null,
@@ -80,17 +69,17 @@ const Individual = ({ setIsIndividual, individualData }) => {
     }
   };
 
-  const closeNewsPopup = () => {
-    setNewsPopup({ isOpen: false, data: null, loading: false, error: null });
-  };
+  // const closeNewsPopup = () => {
+  //   setNewsPopup({ isOpen: false, data: null, loading: false, error: null });
+  // };
 
   if (!individualData) return null;
 
   return (
     <>
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-        onClick={() => setIsIndividual(false)}
+        className="fixed inset-0 z-60 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+        onClick={() => setShowIndividual(false)}
       >
         <div
           className="flex flex-col justify-between items-center relative w-[70%] max-h-[80vh] rounded-xl bg-white p-10 overflow-y-auto"
@@ -157,7 +146,7 @@ const Individual = ({ setIsIndividual, individualData }) => {
           </div>
 
           <button
-            onClick={() => setIsIndividual(false)}
+            onClick={() => setShowIndividual(false)}
             className="mt-6 px-6 py-2 rounded-md bg-red-500 text-white font-semibold hover:brightness-110 cursor-pointer"
           >
             Đóng

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const PersonForm = ({ onSubmit, loading }) => {
+const PersonForm = ({ onSubmit, loading, detailData }) => {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -68,11 +68,10 @@ const PersonForm = ({ onSubmit, loading }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Create query string from form data
       let query = `Tìm kiếm thông tin về ${formData.name}`;
 
       if (formData.age) {
@@ -96,6 +95,9 @@ const PersonForm = ({ onSubmit, loading }) => {
       }
 
       onSubmit(query);
+    }
+    if (Object.keys(validateForm).length === 0 && onSubmit) {
+      await onSubmit(formData);
     }
   };
 

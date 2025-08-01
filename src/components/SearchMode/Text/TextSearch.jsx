@@ -54,7 +54,7 @@ const TextSearch = () => {
     } catch (err) {
       console.error("API error:", err);
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
 
