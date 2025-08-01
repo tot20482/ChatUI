@@ -164,7 +164,6 @@ const Results = ({
               <button
                 onClick={() => {
                   setShowIndividual(true);
-                  setResults(false);
                 }}
                 className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 cursor-pointer transition-colors font-semibold"
               >

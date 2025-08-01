@@ -69,9 +69,9 @@ const Individual = ({ setShowIndividual, individualData }) => {
     }
   };
 
-  // const closeNewsPopup = () => {
-  //   setNewsPopup({ isOpen: false, data: null, loading: false, error: null });
-  // };
+  const closeNewsPopup = () => {
+    setNewsPopup({ isOpen: false, data: null, loading: false, error: null });
+  };
 
   if (!individualData) return null;
 
