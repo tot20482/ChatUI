@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignUp = ({ show }) => {
+const SignUp = ({ show, onClose }) => {
   if (!show) return null;
 
   return (
@@ -10,7 +10,14 @@ const SignUp = ({ show }) => {
         background: "linear-gradient(to right, #094993, #38a44a)",
       }}
     >
-      <div className="w-[85%] h-[90%] bg-white rounded-4xl flex">
+      <div className="relative w-[85%] h-[90%] bg-white rounded-4xl flex">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-10 text-gray-600 hover:text-black text-3xl font-bold cursor-pointer"
+        >
+          &times;
+        </button>
+
         <div className="w-[40%] h-full p-10">
           <div
             className="w-full h-full rounded-4xl flex flex-col justify-center items-start pl-16"
@@ -27,6 +34,8 @@ const SignUp = ({ show }) => {
             </p>
           </div>
         </div>
+
+        {/* Bên phải - form */}
         <div className="w-[60%] flex flex-col justify-center pl-24">
           <p className="font-bold text-4xl">Sign Up</p>
           <form className="space-y-4 mt-8">

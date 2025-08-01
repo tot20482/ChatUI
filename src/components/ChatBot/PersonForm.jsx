@@ -628,9 +628,9 @@ const PersonForm = ({ onSubmit, detailData, setDetailData }) => {
           </div>
         </form>
       </div>
-      {detailData.length > 0 && (
+      {/* {detailData.length > 0 && (
         <ResultList data={detailData} onClose={handleCloseResults} />
-      )}
+      )} */}
     </div>
   );
 };
