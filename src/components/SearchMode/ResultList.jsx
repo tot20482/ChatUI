@@ -38,7 +38,7 @@ const ResultList = ({ data, onClose }) => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://18.143.201.110:80/query", {
+      const response = await fetch("https://dinhthienan203.id.vn/query", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -36,16 +36,19 @@ const TextSearch = () => {
     setLoading(true); // Start loading
 
     try {
-      const response = await fetch("http://18.143.201.110:80/get-name-list", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          person_id: query,
-          top_k: 5,
-        }),
-      });
+      const response = await fetch(
+        "https://dinhthienan203.id.vn/get-name-list",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            person_id: query,
+            top_k: 5,
+          }),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to fetch");
 

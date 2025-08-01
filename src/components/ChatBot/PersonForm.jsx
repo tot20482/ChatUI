@@ -102,16 +102,19 @@ const PersonForm = ({ onSubmit, detailData, setDetailData }) => {
 
     // 3. Gọi API /get-name-list
     try {
-      const response = await fetch("http://18.143.201.110:80/get-name-list", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          person_id: formData.name,
-          top_k: 5,
-        }),
-      });
+      const response = await fetch(
+        "https://dinhthienan203.id.vn/get-name-list",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            person_id: formData.name,
+            top_k: 5,
+          }),
+        }
+      );
 
       const result = await response.json();
       setDetailData(result.results);
@@ -123,7 +126,7 @@ const PersonForm = ({ onSubmit, detailData, setDetailData }) => {
   };
 
   const handleCloseResults = () => {
-    // setDetailData([]);
+    setDetailData([]);
   };
 
   const handleReset = () => {
@@ -628,9 +631,9 @@ const PersonForm = ({ onSubmit, detailData, setDetailData }) => {
           </div>
         </form>
       </div>
-      {/* {detailData.length > 0 && (
+      {detailData.length > 0 && (
         <ResultList data={detailData} onClose={handleCloseResults} />
-      )} */}
+      )}
     </div>
   );
 };

@@ -40,7 +40,9 @@ const Individual = ({ setShowIndividual, individualData }) => {
     setNewsPopup({ isOpen: true, data: null, loading: true, error: null });
 
     try {
-      const response = await fetch(`http://18.143.201.110:80/media/${mediaId}`);
+      const response = await fetch(
+        `https://dinhthienan203.id.vn/media/${mediaId}`
+      );
 
       const result = await response.json();
 

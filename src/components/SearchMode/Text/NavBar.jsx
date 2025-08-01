@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import VpbankLogo from "../../../assets/VPBank_logo.png";
-import woman from "../../../assets/woman.png";
+import friends from "../../../assets/friends.png";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const NavBar = () => {
             onClick={handleAvatarClick}
           >
             <div className="h-10 w-10 rounded-full bg-blue-200 flex justify-center items-center">
-              <img src={woman} alt="Avatar" className="h-8" />
+              <img src={friends} alt="Avatar" className="h-[25px]" />
             </div>
           </div>
 
@@ -60,13 +60,13 @@ const NavBar = () => {
             <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg">
               <button
                 onClick={() => navigate("/settings")}
-                className="block w-full text-left px-4 py-2 text-sm hover:rounded-t-lg hover:bg-gray-100 cursor-pointer"
+                className="block w-full text-left px-4 py-2 text-md hover:rounded-t-lg hover:bg-gray-100 cursor-pointer "
               >
                 Setting
               </button>
               <button
                 onClick={handleLogout}
-                className="block w-full text-left px-4 py-2 text-sm hover:rounded-b-lg hover:bg-gray-100 cursor-pointer"
+                className="block w-full text-left px-4 py-2 text-md hover:rounded-b-lg hover:bg-gray-100 cursor-pointer"
               >
                 Logout
               </button>
