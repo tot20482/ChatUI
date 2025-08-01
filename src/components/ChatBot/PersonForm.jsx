@@ -1,6 +1,7 @@
 import { useState } from "react";
+import ResultList from "../SearchMode/ResultList";
 
-const PersonForm = ({ onSubmit, loading, detailData }) => {
+const PersonForm = ({ onSubmit, detailData, setDetailData }) => {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -28,6 +29,7 @@ const PersonForm = ({ onSubmit, loading, detailData }) => {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +38,6 @@ const PersonForm = ({ onSubmit, loading, detailData }) => {
       [name]: value,
     }));
 
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -62,43 +63,67 @@ const PersonForm = ({ onSubmit, loading, detailData }) => {
       newErrors.age = "Tuổi phải là số từ 0 đến 150";
     }
 
-    // Remove organization validation - no longer required
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
-    if (validateForm()) {
-      let query = `Tìm kiếm thông tin về ${formData.name}`;
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      return;
+    }
 
-      if (formData.age) {
-        query += `, ${formData.age} tuổi`;
-      }
+    // 1. Tạo truy vấn dạng text
+    let query = `Tìm kiếm thông tin về ${formData.name}`;
 
-      if (formData.gender) {
-        query += `, giới tính ${formData.gender}`;
-      }
+    if (formData.age) {
+      query += `, ${formData.age} tuổi`;
+    }
+    if (formData.gender) {
+      query += `, giới tính ${formData.gender}`;
+    }
+    if (formData.hometown) {
+      query += `, quê quán ${formData.hometown}`;
+    }
+    if (formData.occupation) {
+      query += `, chức vụ ${formData.occupation}`;
+    }
+    if (formData.organization) {
+      query += `, làm việc tại ${formData.organization}`;
+    }
 
-      if (formData.hometown) {
-        query += `, quê quán ${formData.hometown}`;
-      }
-
-      if (formData.occupation) {
-        query += `, chức vụ ${formData.occupation}`;
-      }
-
-      if (formData.organization) {
-        query += `, làm việc tại ${formData.organization}`;
-      }
-
+    // 2. Gửi query text lên chatbot/giao diện
+    if (onSubmit) {
       onSubmit(query);
     }
-    if (Object.keys(validateForm).length === 0 && onSubmit) {
-      await onSubmit(formData);
+
+    // 3. Gọi API /get-name-list
+    try {
+      const response = await fetch("http://18.143.201.110:80/get-name-list", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          person_id: formData.name,
+          top_k: 5,
+        }),
+      });
+
+      const result = await response.json();
+      setDetailData(result.results);
+      console.log("Kết quả từ get-name-list:", result);
+    } catch (error) {
+      console.error("Lỗi khi gửi API:", error);
     }
+    setLoading(false);
+  };
+
+  const handleCloseResults = () => {
+    setDetailData([]);
   };
 
   const handleReset = () => {
@@ -603,6 +628,9 @@ const PersonForm = ({ onSubmit, loading, detailData }) => {
           </div>
         </form>
       </div>
+      {detailData.length > 0 && (
+        <ResultList data={detailData} onClose={handleCloseResults} />
+      )}
     </div>
   );
 };

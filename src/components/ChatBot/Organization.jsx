@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import NewsPopup from "./NewsPopup";
 
-const Organization = ({ setIsOrganization, organizationData }) => {
+const Organization = ({ setShowOrganization, organizationData }) => {
   const [newsPopup, setNewsPopup] = useState({
     isOpen: false,
     data: null,
@@ -77,7 +77,7 @@ const Organization = ({ setIsOrganization, organizationData }) => {
     <>
       <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-        onClick={() => setIsOrganization(false)}
+        onClick={() => setShowOrganization(false)}
       >
         <div
           className="flex flex-col justify-between items-center relative w-[70%] max-h-[80vh] rounded-xl bg-white p-10 overflow-y-auto"
@@ -144,7 +144,7 @@ const Organization = ({ setIsOrganization, organizationData }) => {
           </div>
 
           <button
-            onClick={() => setIsOrganization(false)}
+            onClick={() => setShowOrganization(false)}
             className="mt-6 px-6 py-2 rounded-md bg-red-500 text-white font-semibold hover:brightness-110 cursor-pointer"
           >
             Đóng

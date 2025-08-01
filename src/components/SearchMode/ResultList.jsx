@@ -174,7 +174,7 @@ const ResultList = ({ data, onClose }) => {
       )}
       {showOrganization && (
         <Organization
-          setShowOrganization={setShowIndividual}
+          setShowOrganization={setShowOrganization}
           organizationData={organizationData}
         />
       )}

@@ -7,27 +7,6 @@ const Form = () => {
   const [isHistory, setIsHistory] = useState(false);
   const [detailData, setDetailData] = useState(null);
 
-  const handleSubmit = async (formData) => {
-    try {
-      const response = await fetch("http://18.143.201.110:80/get-name-list", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          person_id: formData.name,
-          top_k: 5,
-        }),
-      });
-
-      const result = await response.json();
-      setDetailData(result);
-      console.log(detailData);
-    } catch (error) {
-      console.error("Lỗi khi gửi API:", error);
-    }
-  };
-
   return (
     <div className="h-full w-full">
       <NavBar isHistory={isHistory} setIsHistory={setIsHistory} />
@@ -37,11 +16,11 @@ const Form = () => {
             <History />
           </div>
           <div className="w-[80%] flex justify-center items-center">
-            <PersonForm onSubmit={handleSubmit} detailData={detailData} />
+            <PersonForm setDetailData={setDetailData} detailData={detailData} />
           </div>
         </div>
       ) : (
-        <PersonForm onSubmit={handleSubmit} detailData={detailData} />
+        <PersonForm setDetailData={setDetailData} detailData={detailData} />
       )}
     </div>
   );
