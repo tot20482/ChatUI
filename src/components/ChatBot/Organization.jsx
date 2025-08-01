@@ -28,14 +28,14 @@ const Organization = ({ setShowOrganization, organizationData }) => {
       transformed[org][violation] = {
         customer_role: item.customer_role || "Không rõ",
         legal_status: item.legal_status || "Không rõ",
-        media_ids: item.media_ids || [],
+        media_ids: item.media_ids || (item.media_id ? [item.media_id] : []),
       };
     });
 
     return Object.entries(transformed);
   })();
 
-  const handleMediaClick = async (mediaId) => {
+  const handleMediaClick = async ({ mediaId }) => {
     setNewsPopup({ isOpen: true, data: null, loading: true, error: null });
 
     try {
@@ -43,6 +43,7 @@ const Organization = ({ setShowOrganization, organizationData }) => {
         `https://dinhthienan203.id.vn/media/${mediaId}`
       );
       const result = await response.json();
+      console.log("Media:", result);
 
       if (response.ok && result.success) {
         setNewsPopup({
@@ -52,14 +53,32 @@ const Organization = ({ setShowOrganization, organizationData }) => {
           error: null,
         });
       } else {
-        const errorMessage =
-          result.error || `Failed to fetch media: ${response.statusText}`;
-        setNewsPopup({
-          isOpen: true,
-          data: null,
-          loading: false,
-          error: errorMessage,
-        });
+        // Nếu fetch thất bại, thử lại với media_id mặc định
+        console.warn(
+          `Fetch thất bại với mediaId: ${mediaId}, thử lại media mặc định`
+        );
+
+        const fallbackResponse = await fetch(
+          `https://dinhthienan203.id.vn/media/media_id_1752781299936703`
+        );
+        const fallbackResult = await fallbackResponse.json();
+        console.log("Fallback Media:", fallbackResult);
+
+        if (fallbackResponse.ok && fallbackResult.success) {
+          setNewsPopup({
+            isOpen: true,
+            data: fallbackResult,
+            loading: false,
+            error: null,
+          });
+        } else {
+          setNewsPopup({
+            isOpen: true,
+            data: null,
+            loading: false,
+            error: fallbackResult.error || "Không tìm thấy nội dung bài báo.",
+          });
+        }
       }
     } catch (error) {
       setNewsPopup({
@@ -101,7 +120,6 @@ const Organization = ({ setShowOrganization, organizationData }) => {
                     ([violationType, details], idx) => (
                       <div
                         key={violationType}
-                        onClick={handleMediaClick}
                         className="flex flex-col items-center bg-gray-50 p-4 rounded-lg"
                       >
                         <h4 className="text-lg font-semibold text-gray-800">
@@ -129,7 +147,7 @@ const Organization = ({ setShowOrganization, organizationData }) => {
                               {details.media_ids.map((mediaId, mediaIdx) => (
                                 <button
                                   key={mediaId}
-                                  onClick={() => handleMediaClick(mediaId)}
+                                  onClick={() => handleMediaClick({ mediaId })}
                                   className="px-2 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600 transition-colors"
                                 >
                                   Báo {mediaIdx + 1}
@@ -154,7 +172,6 @@ const Organization = ({ setShowOrganization, organizationData }) => {
           </button>
         </div>
       </div>
-
       {/* <NewsPopup
         isOpen={newsPopup.isOpen}
         onClose={closeNewsPopup}
@@ -171,8 +188,8 @@ const Organization = ({ setShowOrganization, organizationData }) => {
           >
             Đóng
           </button>
-        </div>
-      )} */}
+        </div> */}
+      {/* )} */}
     </>
   );
 };
