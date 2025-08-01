@@ -123,7 +123,7 @@ const PersonForm = ({ onSubmit, detailData, setDetailData }) => {
   };
 
   const handleCloseResults = () => {
-    setDetailData([]);
+    // setDetailData([]);
   };
 
   const handleReset = () => {
