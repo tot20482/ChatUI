@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import NewsPopup from "../SearchMode/NewsPopup";
 
 const Individual = ({ setShowIndividual, individualData }) => {
   const [newsPopup, setNewsPopup] = useState({
@@ -29,7 +30,7 @@ const Individual = ({ setShowIndividual, individualData }) => {
       transformed[person][violation] = {
         customer_role: item.customer_role || "Không rõ",
         legal_status: item.legal_status || "Không rõ",
-        media_ids: item.media_ids || [],
+        media_ids: item.media_ids || (item.media_id ? [item.media_id] : []),
       };
     });
 
@@ -45,6 +46,7 @@ const Individual = ({ setShowIndividual, individualData }) => {
       );
 
       const result = await response.json();
+      console.log("Media:", result);
 
       if (response.ok && result.success) {
         setNewsPopup({
@@ -75,12 +77,10 @@ const Individual = ({ setShowIndividual, individualData }) => {
     setNewsPopup({ isOpen: false, data: null, loading: false, error: null });
   };
 
-  if (!individualData) return null;
-
   return (
     <>
       <div
-        className="fixed inset-0 z-60 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
         onClick={() => setShowIndividual(false)}
       >
         <div
@@ -103,22 +103,25 @@ const Individual = ({ setShowIndividual, individualData }) => {
                     ([violationType, details], idx) => (
                       <div
                         key={violationType}
-                        className="flex flex-col items-center bg-gray-50 p-4 rounded-lg"
+                        className="flex flex-col justify-between items-center bg-gray-50 p-4 rounded-lg"
                       >
-                        <h4 className="text-lg font-semibold text-gray-800">
-                          Tội {idx + 1}
-                        </h4>
-                        <div className="w-14 h-[3px] bg-green-500 mb-4" />
-                        <div className="flex flex-col items-start w-full">
-                          <p className="text-sm text-gray-700 leading-snug mb-2">
-                            <strong>Loại:</strong> {violationType}
-                          </p>
-                          <p className="text-sm text-gray-600 mb-2">
-                            <strong>Vai trò:</strong> {details.customer_role}
-                          </p>
-                          <p className="text-sm text-gray-600 mb-3">
-                            <strong>Tình trạng:</strong> {details.legal_status}
-                          </p>
+                        <div className="flex flex-col justify-center items-center">
+                          <h4 className="text-lg font-semibold text-gray-800">
+                            Tội {idx + 1}
+                          </h4>
+                          <div className="w-14 h-[3px] bg-green-500 mb-4" />
+                          <div className="flex flex-col items-start w-full">
+                            <p className="text-sm text-gray-700 leading-snug mb-2">
+                              <strong>Loại:</strong> {violationType}
+                            </p>
+                            <p className="text-sm text-gray-600 mb-2">
+                              <strong>Vai trò:</strong> {details.customer_role}
+                            </p>
+                            <p className="text-sm text-gray-600 mb-3">
+                              <strong>Tình trạng:</strong>{" "}
+                              {details.legal_status}
+                            </p>
+                          </div>
                         </div>
 
                         {details.media_ids && details.media_ids.length > 0 && (
@@ -131,9 +134,11 @@ const Individual = ({ setShowIndividual, individualData }) => {
                                 <button
                                   key={mediaId}
                                   onClick={() => handleMediaClick(mediaId)}
-                                  className="px-2 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600 transition-colors"
+                                  className="px-5 py-2 bg-[#00b552] text-white text-xs rounded hover:brightness-110 transition-colors cursor-pointer"
                                 >
-                                  Báo {mediaIdx + 1}
+                                  <p className="text-[14px] font-semibold">
+                                    Báo {mediaIdx + 1}
+                                  </p>
                                 </button>
                               ))}
                             </div>
@@ -156,7 +161,7 @@ const Individual = ({ setShowIndividual, individualData }) => {
         </div>
       </div>
 
-      {/* <NewsPopup
+      <NewsPopup
         isOpen={newsPopup.isOpen}
         onClose={closeNewsPopup}
         newsData={newsPopup.data}
@@ -173,7 +178,7 @@ const Individual = ({ setShowIndividual, individualData }) => {
             Đóng
           </button>
         </div>
-      )} */}
+      )}
     </>
   );
 };

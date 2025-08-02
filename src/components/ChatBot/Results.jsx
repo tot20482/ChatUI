@@ -4,14 +4,10 @@ const Results = ({
   responseData,
   setShowIndividual,
   setShowOrganization,
-  showIndividual,
-  showOrganization,
   individualData,
   organizationData,
   setResults,
 }) => {
-  console.log("showIndividual:", showIndividual);
-
   if (!responseData || !responseData.response) return null;
 
   const { response } = responseData;
@@ -40,10 +36,16 @@ const Results = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-[80%] h-[90%] p-6 flex justify-center items-center bg-white rounded-lg shadow-lg"
+        className="relative w-[80%] h-[90%] px-6 py-12 flex justify-center items-center bg-white rounded-lg shadow-lg"
       >
+        <button
+          onClick={() => setResults(false)}
+          className="absolute top-2 right-6 text-gray-500 hover:text-red-600 text-3xl font-bold cursor-pointer"
+          title="Đóng"
+        >
+          &times;
+        </button>
         <div className="w-[90%] h-[100%] max-h-screen overflow-y-auto p-6">
-          {/* Person Info */}
           {result.person_info && (
             <div className="mb-6 p-4 bg-blue-50 rounded-lg">
               <h3 className="text-xl font-bold text-blue-800 mb-3">

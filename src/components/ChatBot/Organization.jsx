@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import NewsPopup from "./NewsPopup";
+import NewsPopup from "../SearchMode/NewsPopup";
 
 const Organization = ({ setShowOrganization, organizationData }) => {
   const [newsPopup, setNewsPopup] = useState({
@@ -53,7 +53,6 @@ const Organization = ({ setShowOrganization, organizationData }) => {
           error: null,
         });
       } else {
-        // Nếu fetch thất bại, thử lại với media_id mặc định
         console.warn(
           `Fetch thất bại với mediaId: ${mediaId}, thử lại media mặc định`
         );
@@ -90,9 +89,9 @@ const Organization = ({ setShowOrganization, organizationData }) => {
     }
   };
 
-  // const closeNewsPopup = () => {
-  //   setNewsPopup({ isOpen: false, data: null, loading: false, error: null });
-  // };
+  const closeNewsPopup = () => {
+    setNewsPopup({ isOpen: false, data: null, loading: false, error: null });
+  };
 
   return (
     <>
@@ -109,7 +108,7 @@ const Organization = ({ setShowOrganization, organizationData }) => {
           </h2>
 
           <div className="flex flex-wrap justify-center gap-8 w-full">
-            {orgEntries.map(([orgName, violations], orgIdx) => (
+            {orgEntries.map(([orgName, violations]) => (
               <div key={orgName} className="w-full pb-6">
                 <h3 className="text-xl font-bold text-blue-800 mb-4 text-center">
                   {orgName}
@@ -120,22 +119,25 @@ const Organization = ({ setShowOrganization, organizationData }) => {
                     ([violationType, details], idx) => (
                       <div
                         key={violationType}
-                        className="flex flex-col items-center bg-gray-50 p-4 rounded-lg"
+                        className="flex flex-col justify-between items-center bg-gray-50 p-4 rounded-lg"
                       >
-                        <h4 className="text-lg font-semibold text-gray-800">
-                          Vi phạm {idx + 1}
-                        </h4>
-                        <div className="w-20 h-[3px] bg-red-500 mb-4" />
-                        <div className="flex flex-col items-start w-full">
-                          <p className=" text-sm text-gray-700 leading-snug mb-2">
-                            <strong>Loại:</strong> {violationType}
-                          </p>
-                          <p className=" text-sm text-gray-600 mb-2">
-                            <strong>Vai trò:</strong> {details.customer_role}
-                          </p>
-                          <p className=" text-sm text-gray-600 mb-3">
-                            <strong>Tình trạng:</strong> {details.legal_status}
-                          </p>
+                        <div className="flex flex-col justify-center items-center">
+                          <h4 className="text-lg font-semibold text-gray-800">
+                            Vi phạm {idx + 1}
+                          </h4>
+                          <div className="w-20 h-[3px] bg-red-500 mb-4" />
+                          <div className="flex flex-col items-start w-full">
+                            <p className=" text-sm text-gray-700 leading-snug mb-2">
+                              <strong>Loại:</strong> {violationType}
+                            </p>
+                            <p className=" text-sm text-gray-600 mb-2">
+                              <strong>Vai trò:</strong> {details.customer_role}
+                            </p>
+                            <p className=" text-sm text-gray-600 mb-3">
+                              <strong>Tình trạng:</strong>{" "}
+                              {details.legal_status}
+                            </p>
+                          </div>
                         </div>
 
                         {details.media_ids.length > 0 && (
@@ -148,9 +150,11 @@ const Organization = ({ setShowOrganization, organizationData }) => {
                                 <button
                                   key={mediaId}
                                   onClick={() => handleMediaClick({ mediaId })}
-                                  className="px-2 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600 transition-colors"
+                                  className="px-5 py-2 bg-[#00b552] text-white text-xs rounded hover:brightness-110 transition-colors cursor-pointer"
                                 >
-                                  Báo {mediaIdx + 1}
+                                  <p className="text-[14px] font-semibold">
+                                    Báo {mediaIdx + 1}
+                                  </p>
                                 </button>
                               ))}
                             </div>
@@ -172,7 +176,7 @@ const Organization = ({ setShowOrganization, organizationData }) => {
           </button>
         </div>
       </div>
-      {/* <NewsPopup
+      <NewsPopup
         isOpen={newsPopup.isOpen}
         onClose={closeNewsPopup}
         newsData={newsPopup.data}
@@ -188,8 +192,8 @@ const Organization = ({ setShowOrganization, organizationData }) => {
           >
             Đóng
           </button>
-        </div> */}
-      {/* )} */}
+        </div>
+      )}
     </>
   );
 };

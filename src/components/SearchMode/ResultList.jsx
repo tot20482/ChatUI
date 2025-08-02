@@ -159,8 +159,6 @@ const ResultList = ({ data, onClose }) => {
           setResults={setResults}
           setShowIndividual={setShowIndividual}
           setShowOrganization={setShowOrganization}
-          showIndividual={showIndividual}
-          showOrganization={showOrganization}
           individualData={individualData}
           organizationData={organizationData}
         />
