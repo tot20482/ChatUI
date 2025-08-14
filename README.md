@@ -1,13 +1,21 @@
-# React + Vite
+## VPBank Technology Hackathon 2025 - 253 CSUiter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+We solved the task "Intelligent Risk Analyzer for AML Case Review", aiming to build an advanced system that automatically detects and assesses adverse media and blacklist risks — enabling fast insights, accurate scoring, and robust compliance to protect organizations from financial crime.
 
-Currently, two official plugins are available:
+![LandingPage_Image](./public/landingPage.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# How to run Our Vite + React Project
 
-## Expanding the ESLint configuration
+1. Install packages:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# ChatUI" 
+```bash
+npm install
+```
+
+2. To run the project, use one of the following commands:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
