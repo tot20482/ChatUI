@@ -82,11 +82,8 @@ const TextSearch = () => {
       <div ref={boxRef} className="w-[60%] max-w-2xl bg-white rounded-3xl">
         <form
           onSubmit={handleSubmit}
-          className="flex items-center overflow-hidden rounded-3xl px-4 py-3"
+          className="flex items-center overflow-hidden rounded-3xl px-4 py-[10px]"
         >
-          <div className="mr-3 flex justify-center items-center">
-            <img src={search} alt="Search icon" className="h-6 w-6" />
-          </div>
           <input
             type="text"
             value={searchText}
@@ -98,9 +95,15 @@ const TextSearch = () => {
               }
             }}
             placeholder="Search..."
-            className="flex-1 text-gray-800 text-[16px] outline-none border-none bg-transparent"
+            className="flex-1 text-gray-800 text-[16px] outline-none border-none bg-transparent ml-2"
           />
           <button type="submit" className="hidden"></button>{" "}
+          <button
+            type="submit"
+            className="mr-3 flex justify-center items-center h-[100%] cursor-pointer"
+          >
+            <img src={search} alt="Search icon" className="h-7 w-7 " />
+          </button>
         </form>
 
         {showHistory && history.length > 0 && (

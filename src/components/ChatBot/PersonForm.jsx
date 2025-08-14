@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ResultList from "../SearchMode/ResultList";
+import ResultList from "./BoxResult";
 
 const PersonForm = ({ onSubmit, detailData, setDetailData }) => {
   const [formData, setFormData] = useState({
