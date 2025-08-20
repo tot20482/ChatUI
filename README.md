@@ -7,6 +7,48 @@ We solved the task "Intelligent Risk Analyzer for AML Case Review", aiming to bu
 
 ![LandingPage_Image](./public/landingPage.png)
 
+## File Tree
+
+```
+ChatUI/
+├── public/                         # Static assets (favicon, images...) copied directly into build
+│   ├── landingPage.png
+│   └── vite.svg
+|
+├── src/                            # Application source code
+│   ├── assets/                     # Project assets (images, icons)
+│   ├── components/                 # Reusable UI components (header, navbar,...)
+│   │   ├── Authentication/
+│   │   ├── ChatBot/
+│   │   ├── LandingPage/
+│   │   ├── SearchMode/
+│   │   │   ├── Chatbot/
+│   │   │   ├── Text/
+│   │   ├── ErrorHandler.jsx
+│   │   └── Loading.jsx
+│   ├── mocks/                      # Mock data for testing
+│   ├── pages/                      # Main pages for routing
+│   │   ├── ChatBot.jsx
+│   │   ├── Form.jsx
+│   │   ├── LandingPage.jsx
+│   │   ├── SearchHome.jsx
+│   │   └── Text.jsx
+│   ├── App.jsx                     # Root component
+│   ├── index.css                   # Global styles
+│   └── main.jsx                    # Entry point to render <App />
+|
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── response.json
+├── response_v2.json
+├── response_v3.json
+├── response_v4.json
+└── vite.config.js
+```
+
 ## How to run Our Vite + React Project
 
 1. Install packages:
